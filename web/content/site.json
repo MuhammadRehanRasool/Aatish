@@ -40,7 +40,7 @@
   ],
   "hero": {
     "kicker": "NASA Space Apps 2026 · MODIS + VIIRS",
-    "lines": ["Twenty-six years", "of fire on *one*", "calendar."],
+    "lines": ["26 years.", "*One* fire", "calendar."],
     "lede": "MODIS has watched Pakistan since 2000. VIIRS, its successor, sees several times more hotspots, so the two records cannot simply be added together. Aatish converts each VIIRS detection into MODIS units, which gives one monthly series from November 2000 to the latest overpass.",
     "primary": { "label": "Open Aatish", "href": "/explore" },
     "secondary": { "label": "How it is harmonized", "href": "/method" }
