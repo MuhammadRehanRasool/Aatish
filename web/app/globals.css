@@ -1,0 +1,677 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   DESIGN TOKENS
+
+   🎨  To change the accent colour, edit content/theme.json, not this file.
+       The values below are only the defaults; theme.json overrides them at
+       render time (see themeCss in lib/content.ts).
+
+   Warm near-black, off-white ink, one accent, one data "signal" colour, and
+   a paper surface used sparingly to change the rhythm between sections.
+   All colours are "R G B" triplets so Tailwind can add opacity (bg-accent/20).
+   ========================================================================== */
+@layer base {
+  :root {
+    --bg: 11 13 16; /* #0B0D10 obsidian */
+    --raised: 18 21 27;
+    --ink: 243 238 230;
+    --ink-2: 196 188 176;
+    --mute: 138 131 120;
+
+    /* ACCENT PLACEHOLDER: overridden by content/theme.json */
+    --accent: 198 242 78; /* theme.json → accent */
+    --accent-fixed: 198 242 78; /* same as accent; never remapped by surfaces */
+    --accent-paper: 75 106 0; /* theme.json → accentOnPaper */
+    --on-accent: 20 18 16; /* theme.json → onAccent */
+    --signal: 165 180 252; /* theme.json → signal */
+
+    --paper: 239 233 223;
+    --paper-ink: 20 18 16;
+    --paper-mute: 94 88 79;
+
+    --gutter: 1rem;
+    --nav-h: 4rem;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+    color-scheme: dark;
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --gutter: 2rem;
+    }
+  }
+  @media (min-width: 1280px) {
+    :root {
+      --gutter: 3rem;
+    }
+  }
+
+  html {
+    scroll-padding-top: calc(var(--nav-h) + 1rem);
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  html:not(.lenis) {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: rgb(var(--bg));
+    color: rgb(var(--ink));
+    font-family: var(--font-body), system-ui, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: rgb(var(--accent));
+    color: rgb(var(--on-accent));
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent));
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-weight: 700;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  img,
+  svg,
+  video {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+/* ==========================================================================
+   COMPONENTS: small, reusable, token-driven
+   ========================================================================== */
+@layer components {
+  .container-page {
+    width: 100%;
+    max-width: 90rem;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  /* Mono eyebrow label, e.g. "05 — NOW" */
+  .label {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* Serif italic emphasis inside display type. In JSON, wrap words in *stars*. */
+  .em {
+    font-family: var(--font-serif), Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  .section {
+    padding-block: clamp(4.5rem, 8vw, 7.5rem);
+  }
+
+  .rule {
+    border-top: 1px solid rgb(var(--ink) / 0.12);
+  }
+
+  /* Underline link that draws out to the right on hover */
+  .link {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 100% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.5s var(--ease-out), color 0.2s;
+    padding-bottom: 1px;
+  }
+  .link:hover {
+    background-size: 0% 1px;
+    background-position: 100% 100%;
+  }
+
+  /* Paper (light) surface: used to break rhythm */
+  .surface-paper {
+    --ink: var(--paper-ink);
+    --accent: var(--accent-paper);
+    --ink-2: 60 55 48;
+    --mute: var(--paper-mute);
+    background: rgb(var(--paper));
+    color: rgb(var(--paper-ink));
+    color-scheme: light;
+  }
+  .surface-paper ::selection {
+    background: rgb(var(--paper-ink));
+    color: rgb(var(--paper));
+  }
+
+  /* Accent surface: dark ink on the accent colour */
+  .surface-accent {
+    --ink: var(--on-accent);
+    --accent: var(--on-accent);
+    --ink-2: var(--on-accent);
+    --mute: var(--on-accent);
+    background: rgb(var(--accent-fixed));
+    color: rgb(var(--on-accent));
+  }
+  .surface-accent .text-ink-2 {
+    opacity: 0.82;
+  }
+  .surface-accent .text-mute {
+    opacity: 0.66;
+  }
+
+  .surface-raised {
+    background: rgb(var(--raised));
+  }
+
+  /* Film grain: one fixed layer, static, no animation */
+  .grain::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Pointer spotlight: any [data-spotlight] gets a soft accent glow under the cursor. */
+  [data-spotlight] {
+    position: relative;
+    isolation: isolate;
+  }
+  [data-spotlight]::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s var(--ease-out);
+    background: radial-gradient(28rem circle at var(--mx, 50%) var(--my, 50%), rgb(var(--accent) / 0.11), transparent 45%);
+  }
+  [data-spotlight]:hover::before {
+    opacity: 1;
+  }
+
+  /* Magnetic: [data-magnetic] drifts toward the pointer (set by MotionLayer). */
+  [data-magnetic] {
+    transform: translate3d(var(--tx, 0), var(--ty, 0), 0);
+    transition: transform 0.5s var(--ease-out);
+  }
+}
+
+/* ==========================================================================
+   MOTION
+   Reveal: elements start visible (no-JS safe). JS adds .js-motion to <html>,
+   which arms the hidden state; IntersectionObserver sets [data-in].
+   ========================================================================== */
+.js-motion [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 1.75rem, 0);
+  transition:
+    opacity 0.9s var(--ease-out),
+    transform 0.9s var(--ease-out);
+  transition-delay: var(--delay, 0ms);
+}
+.js-motion [data-reveal='fade'] {
+  transform: none;
+}
+.js-motion [data-reveal='scale'] {
+  transform: scale(0.94);
+}
+/* The clip lives on children: a fully clipped target never intersects, so the observer would never fire. */
+.js-motion [data-reveal='clip'] {
+  opacity: 1;
+  transform: none;
+}
+.js-motion [data-reveal='clip'] > * {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1.1s var(--ease-out);
+  transition-delay: var(--delay, 0ms);
+}
+/* Stagger: children rise one after another. */
+.js-motion [data-reveal='stagger'] {
+  opacity: 1;
+  transform: none;
+}
+.js-motion [data-reveal='stagger'] > * {
+  opacity: 0;
+  transform: translate3d(0, 1.25rem, 0);
+  transition:
+    opacity 0.8s var(--ease-out),
+    transform 0.8s var(--ease-out);
+}
+.js-motion [data-reveal='stagger'][data-in] > * {
+  opacity: 1;
+  transform: none;
+}
+.js-motion [data-reveal='stagger'] > *:nth-child(2) { transition-delay: 70ms; }
+.js-motion [data-reveal='stagger'] > *:nth-child(3) { transition-delay: 140ms; }
+.js-motion [data-reveal='stagger'] > *:nth-child(4) { transition-delay: 210ms; }
+.js-motion [data-reveal='stagger'] > *:nth-child(5) { transition-delay: 280ms; }
+.js-motion [data-reveal='stagger'] > *:nth-child(6) { transition-delay: 350ms; }
+.js-motion [data-reveal='stagger'] > *:nth-child(n + 7) { transition-delay: 420ms; }
+
+.js-motion [data-reveal][data-in] {
+  opacity: 1;
+  transform: none;
+}
+.js-motion [data-reveal='clip'][data-in] > * {
+  clip-path: inset(0 0 0 0);
+}
+
+/* Headline lines rise out of a mask */
+.rise {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+  margin-bottom: -0.06em;
+}
+.rise > span {
+  display: block;
+  animation: rise 1.1s var(--ease-out) both;
+  animation-delay: var(--delay, 0ms);
+}
+@keyframes rise {
+  from {
+    transform: translate3d(0, 105%, 0);
+  }
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.75rem, 0);
+  }
+}
+
+/* Marquee: two identical tracks, translate -100%, loops seamlessly */
+.marquee {
+  display: flex;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.marquee__track {
+  display: flex;
+  flex: none;
+  min-width: 100%;
+  animation: marquee var(--duration, 60s) linear infinite;
+  animation-direction: var(--direction, normal);
+}
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes ping {
+  75%,
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+.ping {
+  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+.caret {
+  animation: blink 1.1s step-end infinite;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ----------------------------------------------- scroll-driven (no JS) */
+/* Reading progress bar at the very top. Browsers without scroll timelines simply don't show it. */
+.scroll-progress {
+  display: none;
+}
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    display: block;
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 2px;
+    z-index: 65;
+    transform-origin: 0 50%;
+    background: rgb(var(--accent-fixed));
+    animation: progress linear both;
+    animation-timeline: scroll(root);
+  }
+  @keyframes progress {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  /* Images inside [data-parallax] drift slower than the page. */
+  [data-parallax] > * {
+    animation: parallax linear both;
+    animation-timeline: view();
+    animation-range: cover;
+    scale: 1.12;
+  }
+  @keyframes parallax {
+    from {
+      transform: translate3d(0, -5%, 0);
+    }
+    to {
+      transform: translate3d(0, 5%, 0);
+    }
+  }
+}
+
+/* ------------------------------------------------------- hero portrait 3D */
+.portrait-stage {
+  perspective: 1100px;
+}
+.portrait-card {
+  transform-style: preserve-3d;
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.6s var(--ease-out);
+  will-change: transform;
+}
+.portrait-card[data-active] {
+  transition-duration: 0.12s;
+}
+.portrait-layer {
+  transform: translateZ(var(--z, 0px));
+}
+.portrait-glare {
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 30%), rgb(255 255 255 / 0.28), transparent 50%);
+  mix-blend-mode: soft-light;
+  opacity: var(--glare, 0);
+  transition: opacity 0.5s var(--ease-out);
+}
+.portrait-ring {
+  animation: spin-slow 38s linear infinite;
+}
+.portrait-chip {
+  animation: chip-float 6s ease-in-out infinite;
+  animation-delay: var(--d, 0s);
+}
+@keyframes chip-float {
+  50% {
+    translate: 0 -10px;
+  }
+}
+
+/* ---------------------------------------------------------- custom cursor */
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 80;
+  pointer-events: none;
+  border-radius: 9999px;
+  opacity: 0;
+  transition: opacity 0.3s, width 0.35s var(--ease-out), height 0.35s var(--ease-out), background-color 0.3s, border-color 0.3s;
+}
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  background: rgb(var(--accent-fixed));
+}
+.cursor-ring {
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border: 1px solid rgb(var(--accent-fixed) / 0.6);
+  mix-blend-mode: difference;
+}
+html[data-cursor='on'] .cursor-dot,
+html[data-cursor='on'] .cursor-ring {
+  opacity: 1;
+}
+html[data-cursor-hover] .cursor-ring {
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 0 -32px;
+  background: rgb(var(--accent-fixed) / 0.12);
+  border-color: rgb(var(--accent-fixed));
+}
+html[data-cursor-hover] .cursor-dot {
+  opacity: 0;
+}
+
+/* ---------------------------------------------------------- smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------ world map */
+[data-map] path[data-c] {
+  transition: stroke 0.3s var(--ease-out), opacity 0.3s;
+  cursor: pointer;
+}
+[data-map] path[data-c]:hover {
+  stroke: rgb(var(--ink));
+}
+
+/* ==========================================================================
+   REDUCED MOTION: everything still works; nothing moves
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  .js-motion [data-reveal='clip'] > *,
+  .js-motion [data-reveal='stagger'] > *,
+  .js-motion [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    transition: none !important;
+  }
+  .rise > span,
+  .ping,
+  .caret,
+  .portrait-ring,
+  .portrait-chip,
+  [data-parallax] > *,
+  [class*='animate-['] {
+    animation: none !important;
+  }
+  .portrait-card,
+  [data-magnetic] {
+    transform: none !important;
+  }
+  .marquee {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .marquee__track {
+    animation: none;
+    flex-wrap: wrap;
+    min-width: 0;
+  }
+  .marquee__track[aria-hidden='true'] {
+    display: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================================================
+   PRINT
+   ========================================================================== */
+@media print {
+  .no-print,
+  .grain::after,
+  .scroll-progress,
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #000;
+  }
+}
+
+/* ---------------------------------------------------------------- map popups (explorer) */
+.fc-tip .maplibregl-popup-content,
+.fc-pop .maplibregl-popup-content {
+  background: rgba(14, 17, 22, 0.9);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  color: rgb(var(--ink));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 11px 13px;
+  font: 12px/1.45 var(--font-body), system-ui, sans-serif;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
+}
+.fc-tip .maplibregl-popup-tip,
+.fc-pop .maplibregl-popup-tip {
+  border-top-color: rgba(14, 17, 22, 0.9) !important;
+  border-bottom-color: rgba(14, 17, 22, 0.9) !important;
+}
+/* hotspot telemetry card */
+.fc-tel { min-width: 240px; }
+.fc-tel-h {
+  display: flex; align-items: center; gap: 6px;
+  font: 600 9.5px/1.2 var(--font-mono), ui-monospace, monospace;
+  text-transform: uppercase; letter-spacing: 0.12em; color: rgb(var(--mute));
+}
+.fc-tel-dot { width: 6px; height: 6px; border-radius: 99px; background: #FF6A2B; box-shadow: 0 0 10px #FF6A2B; }
+.fc-badge {
+  margin-left: auto; padding: 2px 6px; border-radius: 99px; letter-spacing: 0.06em;
+  color: #FF9A5C; border: 1px solid rgba(255, 106, 43, 0.5); background: rgba(255, 106, 43, 0.1);
+}
+.fc-tel-t { margin: 6px 0 8px; font: 700 15px/1.2 var(--font-display), system-ui, sans-serif; }
+.fc-tel-t span { display: block; margin-top: 2px; font: 500 11px/1.3 var(--font-mono), monospace; color: rgb(var(--ink-2)); }
+.fc-tel-g { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 0; }
+.fc-tel-g > div { padding: 6px 8px; border-radius: 9px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.06); }
+.fc-tel-g dt { font: 600 9px/1.2 var(--font-mono), monospace; text-transform: uppercase; letter-spacing: 0.1em; color: rgb(var(--mute)); }
+.fc-tel-g dd { margin: 3px 0 0; font: 700 12.5px/1.25 var(--font-mono), monospace; font-variant-numeric: tabular-nums; }
+.fc-tel-g dd small { display: block; margin-top: 2px; font: 500 10px/1.3 var(--font-body), sans-serif; color: rgb(var(--mute)); }
+.fc-tel-bar { margin-top: 8px; height: 4px; border-radius: 99px; background: rgba(255, 255, 255, 0.08); overflow: hidden; }
+.fc-tel-bar i { display: block; height: 100%; border-radius: 99px; background: linear-gradient(90deg, #FDE68A, #FDB022, #F05A1A, #D11F0B); }
+.fc-tip-mute {
+  color: rgb(var(--mute));
+  font-size: 11px;
+}
+.fc-pop .maplibregl-popup-close-button {
+  color: rgb(var(--mute));
+  font-size: 16px;
+  padding: 2px 7px;
+}
+.fc-pop-k {
+  color: rgb(var(--mute));
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+.fc-pop-v {
+  font-weight: 700;
+  font-size: 13px;
+  margin: 2px 0 6px;
+}
+.fc-pop table td {
+  padding: 1px 0;
+}
+.fc-pop table td:first-child {
+  color: rgb(var(--mute));
+  padding-right: 12px;
+}
+kbd {
+  border: 1px solid rgba(243, 238, 230, 0.24);
+  border-radius: 4px;
+  padding: 0 4px;
+  font-size: 0.65rem;
+  font-family: var(--font-mono), monospace;
+}
+.maplibregl-ctrl-group {
+  background: rgba(14, 17, 22, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* obsidian glass HUD panel (in a layer so responsive variants like lg:glass work) */
+@layer components {
+.glass {
+  background: rgba(14, 17, 22, 0.82);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
+}
+.glass-active {
+  background-image: radial-gradient(120% 140% at 0% 0%, rgba(255, 106, 43, 0.16), transparent 55%);
+  border-color: rgba(255, 106, 43, 0.45);
+}
+}
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.maplibregl-ctrl-group button .maplibregl-ctrl-icon {
+  filter: invert(1);
+}
+.maplibregl-ctrl-scale {
+  background: rgba(11, 10, 9, 0.7) !important;
+  color: rgb(var(--ink-2)) !important;
+  border-color: rgba(243, 238, 230, 0.4) !important;
+}
+.maplibregl-ctrl-attrib {
+  background: rgba(11, 10, 9, 0.75) !important;
+  color: rgb(var(--mute)) !important;
+  font-size: 10px;
+}
+.maplibregl-ctrl-attrib a {
+  color: rgb(var(--ink-2)) !important;
+}
+.maplibregl-ctrl-attrib-button {
+  filter: invert(1);
+  background-color: transparent !important;
+}

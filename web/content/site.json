@@ -1,0 +1,125 @@
+{
+  "name": "Aatish",
+  "tagline": "Cross-Sensor MODIS & VIIRS Fire Harmonization Engine",
+  "team": "Aero Snipers",
+  "event": "NASA Space Apps Challenge 2026, Karachi",
+  "challenge": {
+    "title": "Harmonization of MODIS and VIIRS Hot Spots",
+    "url": "https://www.spaceappschallenge.org/2026/challenges/modis-and-viirs-hot-spots/"
+  },
+  "teamUrl": "https://www.spaceappschallenge.org/2026/find-a-team/aero-snipers/",
+  "repoUrl": "",
+  "seo": {
+    "title": "Aatish · Cross-Sensor MODIS & VIIRS Fire Harmonization Engine for Pakistan",
+    "description": "Monthly satellite hotspot counts for any area of Pakistan from November 2000 to today. MODIS and VIIRS are put on one scale (MODIS-equivalent), with uncertainty bands, anomalies against the historical median and CSV downloads.",
+    "keywords": [
+      "MODIS",
+      "VIIRS",
+      "FIRMS",
+      "active fire",
+      "hotspots",
+      "fire calendar",
+      "crop residue burning",
+      "Pakistan",
+      "Punjab",
+      "Sindh",
+      "smog",
+      "harmonization",
+      "NASA Space Apps 2026",
+      "NOAA-20",
+      "NOAA-21",
+      "Suomi NPP"
+    ]
+  },
+  "nav": [
+    { "label": "Explore", "href": "/explore" },
+    { "label": "Method", "href": "/method" },
+    { "label": "Data", "href": "/data" },
+    { "label": "About", "href": "/about" }
+  ],
+  "hero": {
+    "kicker": "NASA Space Apps 2026 · MODIS + VIIRS",
+    "lines": ["Twenty-six years", "of fire on *one*", "calendar."],
+    "lede": "MODIS has watched Pakistan since 2000. VIIRS, its successor, sees several times more hotspots, so the two records cannot simply be added together. Aatish converts each VIIRS detection into MODIS units, which gives one monthly series from November 2000 to the latest overpass.",
+    "primary": { "label": "Open Aatish", "href": "/explore" },
+    "secondary": { "label": "How it is harmonized", "href": "/method" }
+  },
+  "marquee": [
+    "Terra",
+    "Aqua",
+    "Suomi NPP",
+    "NOAA-20",
+    "NOAA-21",
+    "1 km",
+    "375 m",
+    "Fire radiative power",
+    "Day and night fitted separately",
+    "Leave-one-year-out validated",
+    "MODIS-equivalent units"
+  ],
+  "problem": {
+    "kicker": "The problem",
+    "title": "Two instruments, *one record*.",
+    "aside": "Without a bridge, the fire record changes scale when MODIS retires and VIIRS takes over.",
+    "points": [
+      {
+        "title": "MODIS has the history",
+        "body": "Terra (2000) and Aqua (2002) have 1 km pixels and a 26-year archive. Both satellites have drifted away from their original overpass times, and from late 2022 our data shows the drift changing what they detect."
+      },
+      {
+        "title": "VIIRS has the detail",
+        "body": "Suomi NPP (2012), NOAA-20 (2018) and NOAA-21 (2023) have 375 m pixels. Over Pakistan in 2012–2022 they recorded about 4× more hotspots than MODIS by day and about 15× more at night."
+      },
+      {
+        "title": "Adding them is wrong",
+        "body": "Put the raw counts side by side and the fire record seems to jump when VIIRS starts in 2012, even though only the instruments changed. Trends and anomalies are only meaningful once both are on the same scale."
+      }
+    ]
+  },
+  "method": {
+    "kicker": "The method",
+    "title": "Weigh each detection by what *MODIS would have seen*.",
+    "aside": "Every step was tested on Pakistan data from 2012 to 2022, the years both instruments flew with stable orbits.",
+    "steps": [
+      {
+        "title": "Clean every stream the same way",
+        "body": "Keep MODIS detections with confidence ≥ 30 and VIIRS detections marked nominal or high. One location mask removes kilns, flares and other static heat sources for every sensor and every year."
+      },
+      {
+        "title": "Weight each VIIRS detection",
+        "body": "A detection's weight is the measured chance that Aqua saw the same fire, by fire radiative power and day or night, scaled by month and a local correction. The weights add up, so any area you draw gets a consistent total."
+      },
+      {
+        "title": "Stitch the eras",
+        "body": "Terra alone is scaled up until Aqua arrives (July 2002). Observed MODIS is used until September 2022. From October 2022 the series uses VIIRS-derived values, averaged over whichever VIIRS satellites were active."
+      },
+      {
+        "title": "Put a band on every number",
+        "body": "Each derived month gets an 80% band from held-out years, sized by how many detections it contains. The site only calls a year the worst, or a change a trend, when the gap is bigger than that band."
+      }
+    ]
+  },
+  "impact": {
+    "kicker": "Local impact",
+    "title": "Smog season, *measured*.",
+    "body": [
+      "Punjab burns twice a year. In our calendar its two biggest months are May and November, after the wheat and rice harvests, and November is when the smoke adds to the haze over Lahore.",
+      "With one consistent series, a land manager or a reporter can ask whether this November is unusual, compare it with every November since 2000, and download the hotspots behind the answer."
+    ]
+  },
+  "audience": [
+    { "who": "Emergency responders", "what": "See whether the current month is outside the normal range for the same days of the month." },
+    { "who": "Scientists", "what": "Get monthly MODIS-equivalent series with bands, raw points with weights, and the full calibration." },
+    { "who": "Land managers", "what": "Draw a district or farm area and see which months burn and which years were worst." }
+  ],
+  "cta": {
+    "title": "Draw your own *area*.",
+    "body": "Pick a province, draw a polygon or type a point and radius. The calendar, the anomaly and the downloads update for that area.",
+    "label": "Open Aatish",
+    "href": "/explore"
+  },
+  "footer": {
+    "line": "A harmonized MODIS + VIIRS hotspot calendar, built in 48 hours for NASA Space Apps 2026.",
+    "note": "Data: NASA FIRMS. NRT months are provisional."
+  }
+}
