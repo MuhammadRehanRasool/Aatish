@@ -8,7 +8,7 @@ const n0 = (v: number) => fmt(v, v < 10 ? 1 : 0)
 
 export const askAssistant = (question: string) => window.dispatchEvent(new CustomEvent('fc-ask', { detail: question }))
 
-/** Next 1-3 months (PERS model) next to the usual level for that month. */
+/** Next 1-3 months (persistence model: 10-year usual level + recent anomaly) next to the usual level for that month. */
 export function ForecastCard({ f }: { f: ForecastResponse }) {
   const max = Math.max(1, ...f.months.flatMap((m) => [m.hi, m.typical_median_10y, m.observed_so_far?.value ?? 0]))
   const first = f.months[0]!
@@ -17,9 +17,14 @@ export function ForecastCard({ f }: { f: ForecastResponse }) {
   const sk = f.aoi.key === 'pakistan' ? f.skill.country_h1 : f.skill.cell1_h1
   return (
     <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-4">
-      <div className="flex items-baseline justify-between gap-2">
-        <p className="font-mono text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-mute">Next 3 months · experimental forecast</p>
-        <span className="rounded-full border border-white/15 px-2 py-0.5 font-mono text-[0.6875rem] font-semibold text-mute">PERS model</span>
+      <div className="flex items-center justify-between gap-3">
+        <p className="min-w-0 font-mono text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-mute">Next 3 months · experimental forecast</p>
+        <span
+          className="shrink-0 cursor-help whitespace-nowrap rounded-full border border-white/15 px-2.5 py-0.5 text-[0.6875rem] font-semibold text-ink-2"
+          title="Persistence model: the usual level for each month (average of the last 10 years), adjusted by how far last month and the last 12 months ran above or below usual. Tested on 2015–2026 forecasts made without seeing the answer."
+        >
+          Usual + recent anomaly
+        </span>
       </div>
       <p className="mt-2 text-sm leading-snug">
         Expect about <b className="text-accent">{n0(first.value)}</b> hotspots in {ymLong(first.ym)}
