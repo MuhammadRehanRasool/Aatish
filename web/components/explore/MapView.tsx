@@ -190,6 +190,46 @@ export function MapView({
       for (const id of ['regions', 'aoi', 'draft', 'grid', 'pts', 'live']) m.addSource(id, { type: 'geojson', data: fc() })
       m.addLayer({ id: 'regions-fill', type: 'fill', source: 'regions', filter: ['!=', ['get', 'key'], 'pakistan'], paint: { 'fill-color': ['coalesce', ['get', 'fill'], '#f3eee6'], 'fill-opacity': ['case', ['has', 'fill'], ['case', ['boolean', ['feature-state', 'hover'], false], 0.5, 0.3], ['case', ['boolean', ['feature-state', 'hover'], false], 0.07, 0]] } }, firstSymbol)
       m.addLayer({ id: 'regions-line', type: 'line', source: 'regions', paint: { 'line-color': '#f3eee6', 'line-opacity': ['case', ['==', ['get', 'key'], 'pakistan'], 0.6, 0.28], 'line-width': ['case', ['==', ['get', 'key'], 'pakistan'], 1.3, 0.8] } }, firstSymbol)
+      // ---- Jammu & Kashmir shown as disputed territory (Natural Earth; built by web/scripts/build_kashmir.py)
+      try {
+        const res = await fetch('/data/kashmir.geojson')
+        if (!res.ok) throw new Error(`${res.status}`)
+        const kj: GeoJSON.FeatureCollection = await res.json()
+        if (cancelled) return
+        if (!m.hasImage('fc-hatch')) {
+          const n = 8
+          const px = new Uint8Array(n * n * 4)
+          for (let y = 0; y < n; y++)
+            for (let x = 0; x < n; x++) {
+              const on = (x + y) % n === 0 || (x + y) % n === n - 1
+              px.set(on ? [243, 238, 230, 70] : [0, 0, 0, 0], (y * n + x) * 4)
+            }
+          m.addImage('fc-hatch', { width: n, height: n, data: px }, { pixelRatio: 1 })
+        }
+        m.addSource('kashmir', { type: 'geojson', data: kj })
+        m.addLayer({ id: 'kashmir-fill', type: 'fill', source: 'kashmir', filter: ['==', ['get', 'part'], 'outside'], paint: { 'fill-pattern': 'fc-hatch', 'fill-opacity': 0.9 } }, firstSymbol)
+        m.addLayer({ id: 'kashmir-line', type: 'line', source: 'kashmir', filter: ['==', ['get', 'part'], 'outline'], paint: { 'line-color': '#f3eee6', 'line-opacity': 0.55, 'line-width': 1.2, 'line-dasharray': [3, 2] } }, firstSymbol)
+        m.addLayer({
+          id: 'kashmir-label',
+          type: 'symbol',
+          source: 'kashmir',
+          filter: ['==', ['get', 'part'], 'label'],
+          minzoom: 4,
+          layout: { 'text-field': ['get', 'label'], 'text-font': ['Noto Sans Regular'], 'text-size': ['interpolate', ['linear'], ['zoom'], 4, 9, 8, 13], 'text-letter-spacing': 0.12, 'text-allow-overlap': true },
+          paint: { 'text-color': '#f3eee6', 'text-opacity': 0.75, 'text-halo-color': '#0B0D10', 'text-halo-width': 1.4 },
+        })
+        const ktip = new Popup({ closeButton: false, closeOnClick: false, className: 'fc-tip', offset: 12, maxWidth: '280px' })
+        m.on('mousemove', 'kashmir-fill', (e) => {
+          if (m.getCanvas().dataset.drawing) return
+          ktip
+            .setLngLat(e.lngLat)
+            .setHTML('<b>Jammu &amp; Kashmir · disputed territory</b><br/>This part is administered by India and claimed by Pakistan (Siachen: claimed by both).<br/><span class="fc-tip-mute">No fire data shown here. The app covers Pakistan-administered areas only.</span>')
+            .addTo(m)
+        })
+        m.on('mouseleave', 'kashmir-fill', () => ktip.remove())
+      } catch {
+        // The disputed-territory overlay is optional; the map works without it.
+      }
       m.addLayer({ id: 'aoi-line', type: 'line', source: 'aoi', paint: { 'line-color': ACCENT, 'line-width': 2.2 } })
       m.addLayer({
         id: 'grid-heat',
@@ -257,7 +297,8 @@ export function MapView({
         m.getCanvas().style.cursor = 'pointer'
         const key = String(f?.properties?.key ?? '')
         const info = paintRef.current?.[key]?.html
-        tip.setLngLat(e.lngLat).setHTML(`<b>${esc(String(f?.properties?.label ?? ''))}</b>${info ? `<br/>${info}` : ''}<br/><span class="fc-tip-mute">Click to analyse this province</span>`).addTo(m)
+        const disputed = key === 'region:PK-JK' || key === 'region:PK-GB' ? '<br/><span class="fc-tip-mute">Part of disputed Jammu &amp; Kashmir</span>' : ''
+        tip.setLngLat(e.lngLat).setHTML(`<b>${esc(String(f?.properties?.label ?? ''))}</b>${disputed}${info ? `<br/>${info}` : ''}<br/><span class="fc-tip-mute">Click to analyse this province</span>`).addTo(m)
       })
       m.on('mouseleave', 'regions-fill', () => {
         if (hoverId !== undefined) m.setFeatureState({ source: 'regions', id: hoverId }, { hover: false })

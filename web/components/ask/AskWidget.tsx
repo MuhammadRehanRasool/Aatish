@@ -86,6 +86,11 @@ export function AskWidget() {
     return () => window.removeEventListener('keydown', onKey)
   }, [open])
 
+  // shrink the auto-growing textarea back to one line once the input is cleared (after sending)
+  useEffect(() => {
+    if (!input && inputRef.current) inputRef.current.style.height = 'auto'
+  }, [input])
+
   const send = useCallback(
     async (q: string) => {
       const question = q.trim().slice(0, 600)
@@ -244,44 +249,81 @@ export function AskWidget() {
           </div>
 
           <form
-            className="border-t border-line p-3"
+            className="border-t border-line bg-bg px-3 pb-2.5 pt-3"
             onSubmit={(e) => {
               e.preventDefault()
               void send(input)
             }}
           >
-            <div className="flex items-end gap-2">
-              <label className="flex-1">
+            {/* one composer box: the textarea grows with the text, the send/stop button sits inside it */}
+            <div
+              className={cn(
+                'flex items-end gap-1.5 rounded-2xl border bg-raised p-1.5 pl-3.5 transition-[border-color,box-shadow]',
+                'border-line focus-within:border-accent focus-within:ring-[3px] focus-within:ring-accent/20'
+              )}
+            >
+              <label className="flex min-w-0 flex-1 self-center">
                 <span className="sr-only">Your question</span>
                 <textarea
                   ref={inputRef}
                   value={input}
-                  onChange={(e) => setInput(e.target.value)}
+                  onChange={(e) => {
+                    setInput(e.target.value)
+                    const el = e.target
+                    el.style.height = 'auto'
+                    el.style.height = `${Math.min(el.scrollHeight, 128)}px`
+                  }}
                   onKeyDown={(e) => {
-                    if (e.key === 'Enter' && !e.shiftKey) {
+                    if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) {
                       e.preventDefault()
                       void send(input)
                     }
                   }}
                   rows={1}
                   maxLength={600}
-                  placeholder="e.g. Is November 2026 worse than usual?"
-                  className="max-h-28 min-h-10 w-full resize-none rounded-xl border border-line bg-raised px-3 py-2 text-sm outline-none focus:border-accent"
+                  placeholder="Ask about fires, e.g. is Nov 2026 worse than usual?"
+                  className="block max-h-32 w-full resize-none bg-transparent py-1.5 text-sm leading-6 text-ink outline-none placeholder:text-mute"
                 />
               </label>
               {busy ? (
-                <button type="button" onClick={() => abortRef.current?.abort()} className="h-10 rounded-xl border border-line-strong px-3 text-xs font-bold hover:border-ink">
-                  Stop
+                <button
+                  type="button"
+                  onClick={() => abortRef.current?.abort()}
+                  className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-line-strong text-ink transition-colors hover:border-ink"
+                  aria-label="Stop the answer"
+                  title="Stop"
+                >
+                  <span aria-hidden="true" className="h-3 w-3 rounded-[3px] bg-current" />
                 </button>
               ) : (
-                <button type="submit" disabled={!input.trim()} className="h-10 rounded-xl bg-accent px-4 text-xs font-bold text-on-accent hover:bg-ink hover:text-bg disabled:opacity-40">
-                  Ask
+                <button
+                  type="submit"
+                  disabled={!input.trim()}
+                  className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-accent text-on-accent transition-[background-color,color,opacity,transform] hover:bg-ink hover:text-bg active:scale-95 disabled:cursor-not-allowed disabled:bg-line disabled:text-mute disabled:hover:bg-line disabled:hover:text-mute"
+                  aria-label="Ask"
+                  title="Ask (Enter)"
+                >
+                  <svg aria-hidden="true" viewBox="0 0 20 20" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M10 16V4M4.5 9.5 10 4l5.5 5.5" />
+                  </svg>
                 </button>
               )}
             </div>
-            <p className="mt-1.5 text-[0.62rem] leading-snug text-mute">
-              AI answers (Google Gemini) can be wrong. Numbers come from the site&apos;s data; background explanations are general knowledge.
-            </p>
+            <div className="mt-2 flex items-start justify-between gap-3 px-1 text-[0.64rem] leading-snug text-mute">
+              <p>
+                Gemini can make mistakes.
+                {/* Numbers are from site data; other details are general knowledge. */}
+              </p>
+              <p className="shrink-0 whitespace-nowrap tabular-nums" aria-live="polite">
+                {input.length > 500 ? (
+                  <span className={cn(input.length >= 600 && 'text-accent')}>{input.length}/600</span>
+                ) : (
+                  <span className="hidden sm:inline">
+                    <kbd className="font-sans">Enter</kbd> to send · <kbd className="font-sans">Shift+Enter</kbd> new line
+                  </span>
+                )}
+              </p>
+            </div>
           </form>
         </section>
       )}
