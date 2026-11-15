@@ -10,6 +10,7 @@ import { MONTHS, MONTHS_LONG, calibration, fmt, fmtDate, overlapPk, regionSummar
 import { DIVERGING, RAMPS, pctColor, rampGradient, type RampName } from '@/lib/ramps'
 import { cn } from '@/lib/utils'
 
+import { AreaSelect } from './AreaSelect'
 import { ForecastCard, askAssistant } from './ForecastCard'
 import { StoryBar, type Chapter } from './StoryBar'
 import { CalendarChart, DailyChart, SeasonClock, TimelineChart, YearChart, type ChartHandle } from './charts'
@@ -1165,21 +1166,12 @@ export function Explorer({ dataEnd, dataEndDate }: { dataEnd: string; dataEndDat
             <StatusPill span={span} />
           </div>
           <div className="flex items-center gap-1.5">
-            <label className="min-w-0 flex-1">
-              <span className="sr-only">Area</span>
-              <select
-                value={PRESETS.some((p) => p.key === s.aoi) ? s.aoi : 'custom'}
-                onChange={(e) => e.target.value !== 'custom' && onAoi(e.target.value, labelFor(e.target.value))}
-                className="h-10 w-full truncate rounded-xl border border-white/15 bg-black/30 px-3 font-display text-base font-bold outline-none focus:border-accent"
-              >
-                {PRESETS.map((p) => (
-                  <option key={p.key} value={p.key}>
-                    {p.label}
-                  </option>
-                ))}
-                {!PRESETS.some((p) => p.key === s.aoi) && <option value="custom">{data?.aoi.label ?? s.label}</option>}
-              </select>
-            </label>
+            <AreaSelect
+              options={PRESETS}
+              value={s.aoi}
+              customLabel={data?.aoi.label ?? s.label}
+              onChange={(k) => onAoi(k, labelFor(k))}
+            />
           </div>
           <p className="text-sm text-mute">{archiveMode ? 'Click a province on the map or pick one above.' : 'Click a province on the map, or use Area Tools to draw your own.'}</p>
           {notice && (
