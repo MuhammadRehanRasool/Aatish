@@ -1,0 +1,39 @@
+# secrets (copy .env.example → .env)
+.env
+.env.*
+!.env.example
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# node / next
+node_modules/
+dist/
+.next/
+out/
+*.tsbuildinfo
+.vercel/
+
+# editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+
+# local AI-assistant settings
+.claude/settings.local.json
+
+# scratch files kept locally, to be deleted (not part of the project)
+temp/
+
+# official NASA user guides: kept locally, linked from the docs instead
+docs/reference/
+
+# derived exploration artifacts (regenerable, ~170 MB)
+data/explore/
