@@ -23,12 +23,12 @@ export function ProofNumbers() {
           <div
             key={m.label}
             data-spotlight
-            className="flex flex-col border-line py-10 sm:px-6 sm:[&:nth-child(even)]:border-l lg:border-l lg:px-8 lg:first:border-l-0 lg:first:pl-0 [&:not(:first-child)]:border-t sm:[&:nth-child(2)]:border-t-0 lg:[&:not(:first-child)]:border-t-0"
+            className="flex min-w-0 flex-col border-line py-10 [container-type:inline-size] sm:px-6 sm:[&:nth-child(even)]:border-l lg:border-l lg:px-8 lg:first:border-l-0 lg:first:pl-0 [&:not(:first-child)]:border-t sm:[&:nth-child(2)]:border-t-0 lg:[&:not(:first-child)]:border-t-0"
             data-reveal suppressHydrationWarning
             style={{ '--delay': `${i * 90}ms` } as React.CSSProperties}
           >
             <dt className="order-2 mt-4 font-display text-xl font-bold tracking-tight">{m.label}</dt>
-            <dd className="order-1 font-display text-[clamp(2.75rem,5.4vw,5.25rem)] font-bold leading-[0.85] tracking-[-0.045em] text-ink">
+            <dd className="order-1 whitespace-nowrap font-display text-[clamp(2.25rem,17cqi,5.25rem)] font-bold leading-[0.85] tabular-nums tracking-[-0.045em] text-ink">
               <CountUp value={m.value} />
             </dd>
             <dd className="order-3 mt-3 text-[0.95rem] leading-relaxed text-mute">{m.detail}</dd>
