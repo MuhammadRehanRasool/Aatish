@@ -4,9 +4,9 @@
 
 *Aatish* (آتش) is Urdu for "fire". It was built in 48 hours by team **Aero Snipers** at **NASA Space Apps Challenge 2026** (Karachi) for the challenge [Harmonization of MODIS and VIIRS Hot Spots](https://www.spaceappschallenge.org/2026/challenges/modis-and-viirs-hot-spots/).
 
-![Aatish explorer: November 2026 hotspots over Pakistan](fillings/assets/shots/month_dots.png)
+![Aatish explorer: November 2026 hotspots over Pakistan](docs/md_asset/month_dots.png)
 
-**App:** [aatishspace.vercel.app](https://aatishspace.vercel.app) · **Demo slides:** [`fillings/02_slides/slides.pdf`](fillings/02_slides/slides.pdf) · **Data:** [NASA FIRMS](https://firms.modaps.eosdis.nasa.gov/)
+**App:** [aatishspace.vercel.app](https://aatishspace.vercel.app) · **Demo slides:** [`Google Drive: Slides`](https://drive.google.com/file/d/1CmtRzUbdKJtIA0uXKdf_2MeldE6IjOFf/view?usp=sharing) · **Data:** [NASA FIRMS](https://firms.modaps.eosdis.nasa.gov/)
 
 ---
 
@@ -18,7 +18,7 @@ Aatish converts every VIIRS detection into **MODIS-equivalent** units, so the se
 
 | Raw counts: a fake ×6.9 jump in 2012 | Harmonized: +2.7 % a year, 2002–2025 |
 |---|---|
-| ![raw](fillings/assets/shots/illusion_raw.png) | ![harmonized](fillings/assets/shots/illusion_harmonized.png) |
+| ![raw](docs/md_asset/illusion_raw.png) | ![harmonized](docs/md_asset/illusion_harmonized.png) |
 
 ## What you can do in the app
 
