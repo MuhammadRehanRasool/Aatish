@@ -1,15 +1,10 @@
 import { Button, LiveDot, Rich } from '@/components/primitives'
 import { site } from '@/lib/content'
 import { MONTHS, fmt, fmtDate, pakistan } from '@/lib/data'
+import { RAMPS, rampGradient } from '@/lib/ramps'
 
 import { CalendarPoster } from './CalendarPoster'
 import { HeroStage } from './HeroStage'
-
-const CHIP_SPOTS: React.CSSProperties[] = [
-  { top: '6%', left: '-4%' },
-  { top: '38%', right: '-6%' },
-  { bottom: '14%', left: '-2%' },
-]
 
 export function Hero() {
   const a = pakistan.anomaly
@@ -88,19 +83,28 @@ export function Hero() {
           <div className="relative lg:col-span-5">
             <div className="relative mx-auto w-full max-w-[34rem] rounded-frame border border-line bg-raised/40">
               <HeroStage months={pakistan.months} poster={<CalendarPoster months={pakistan.months} titles={false} className="h-full w-auto max-w-full" />} />
-              {chips.map((chip, i) => (
-                <span key={chip} className="pointer-events-none absolute hidden sm:block" style={CHIP_SPOTS[i]}>
-                  <span
-                    className="portrait-chip label block rounded-full border border-line-strong bg-bg/85 px-3 py-2 text-[0.6875rem] text-ink shadow-[0_10px_30px_-10px_rgb(0_0_0/0.6)] backdrop-blur"
-                    style={{ '--d': `${i * -1.4}s` } as React.CSSProperties}
-                  >
-                    <span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-accent align-middle" aria-hidden="true" />
-                    {chip}
-                  </span>
-                </span>
-              ))}
             </div>
-            <p className="label mt-4 text-center text-mute">Pakistan, every month since Nov 2000 · height and colour = log count</p>
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[0.6875rem] text-mute">
+              <span className="label">Pakistan · every month since Nov 2000</span>
+              <span className="inline-flex items-center gap-2" aria-label="Colour and height show the monthly count on a log scale, low to high">
+                <span className="label">Fewer</span>
+                <span className="h-1.5 w-20 rounded-full" style={{ background: rampGradient(RAMPS.cividis) }} aria-hidden="true" />
+                <span className="label">More</span>
+                <span className="label">(log)</span>
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <span className="h-2 w-2 rounded-sm bg-accent" aria-hidden="true" />
+                <span className="label">Latest month</span>
+              </span>
+            </div>
+            <ul className="mt-3 flex flex-wrap justify-center gap-2" aria-label="Key facts">
+              {chips.map((chip) => (
+                <li key={chip} className="label rounded-full border border-line-strong bg-bg/85 px-3 py-1.5 text-[0.6875rem] text-ink">
+                  <span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-accent align-middle" aria-hidden="true" />
+                  {chip}
+                </li>
+              ))}
+            </ul>
             <div className="mt-4 flex justify-center">
               <a href="#illusion" className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-[#0E1116]/80 px-4 py-2 text-sm font-bold shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl hover:border-accent/60">
                 <span className="rounded-full bg-signal/15 px-2 py-0.5 text-[0.68rem] text-signal">Raw counts</span>

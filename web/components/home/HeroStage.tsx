@@ -3,7 +3,7 @@
 import dynamic from 'next/dynamic'
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 
-import type { Month } from '@/lib/data'
+import { MONTHS_LONG, fmt, type Month } from '@/lib/data'
 import { cn } from '@/lib/utils'
 
 const Calendar3D = dynamic(() => import('./Calendar3D'), { ssr: false })
@@ -26,8 +26,10 @@ export function HeroStage({ months, poster }: { months: Month[]; poster: ReactNo
   const [enabled, setEnabled] = useState(false)
   const [visible, setVisible] = useState(true)
   const [shown, setShown] = useState(false)
-  const [label, setLabel] = useState<string | null>(null)
-  const onHover = useCallback((l: string | null) => setLabel(l), [])
+  const [hover, setHover] = useState<Month | null>(null)
+  const onHover = useCallback((m: Month | null) => setHover(m), [])
+  const latest = months[months.length - 1]
+  const m = hover ?? latest
 
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !webglOk()) return
@@ -56,9 +58,29 @@ export function HeroStage({ months, poster }: { months: Month[]; poster: ReactNo
           <Calendar3D months={months} active={visible} onHover={onHover} />
         </div>
       )}
-      <p aria-live="polite" className="label pointer-events-none absolute inset-x-0 bottom-3 text-center text-ink-2">
-        {label ?? (enabled ? 'Hover a bar · rows are years, columns are months' : '')}
-      </p>
+      {enabled && m && (
+        <div
+          aria-live="polite"
+          className={cn(
+            'pointer-events-none absolute left-3 top-3 min-w-[11.5rem] rounded-xl border bg-[#0B0D10]/85 px-3.5 py-2.5 shadow-[0_12px_30px_-10px_rgb(0_0_0/0.7)] backdrop-blur-md transition-[opacity,border-color] duration-500',
+            shown ? 'opacity-100' : 'opacity-0',
+            hover ? 'border-white/20' : 'border-accent/45',
+          )}
+        >
+          <p className={cn('font-mono text-[0.625rem] font-semibold uppercase tracking-[0.14em]', hover ? 'text-mute' : 'text-accent')}>
+            {hover ? 'Selected month' : `Latest month · ${m.days_covered < m.days_in_month ? `${m.days_covered} of ${m.days_in_month} days` : 'complete'}`}
+          </p>
+          <p className="mt-1 font-display text-lg font-bold leading-tight">
+            {MONTHS_LONG[m.month - 1]} {m.year}
+          </p>
+          <p className="mt-0.5 text-sm text-ink-2">
+            <b className="tabular-nums text-ink">{fmt(m.value)}</b> MODIS-eq hotspots
+          </p>
+          {m.pct != null && <p className="mt-0.5 text-xs text-mute">Above {Math.round(m.pct)}% of other {MONTHS_LONG[m.month - 1]}s</p>}
+          {m.provisional && <p className="mt-0.5 text-xs text-mute">Provisional (near-real-time data)</p>}
+          {!hover && <p className="mt-1.5 border-t border-white/10 pt-1.5 text-[0.6875rem] text-mute">Hover a bar to read any month</p>}
+        </div>
+      )}
     </div>
   )
 }
