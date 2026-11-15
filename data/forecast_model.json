@@ -1,0 +1,215 @@
+{
+ "method": "PERS: log1p 10-year same-month climatology + pooled linear anomaly persistence (last month, last 12 months); one coefficient set per horizon",
+ "unit": "MODIS-equivalent detections (Terra+Aqua) per month, main series",
+ "horizons": 3,
+ "clim_years": 10,
+ "fit": {
+  "origins": [
+   "2003-01",
+   "2026-09"
+  ],
+  "last_complete_month": "2026-10",
+  "series": "Pakistan + 41 one-degree cells (mean >= 2 per month)"
+ },
+ "coefficients": {
+  "1": {
+   "b0": 0.0755,
+   "b_last_month": 0.24957,
+   "b_last_12_months": 0.21043
+  },
+  "2": {
+   "b0": 0.0939,
+   "b_last_month": 0.09331,
+   "b_last_12_months": 0.23868
+  },
+  "3": {
+   "b0": 0.10156,
+   "b_last_month": 0.03606,
+   "b_last_12_months": 0.23429
+  }
+ },
+ "band_by_count": {
+  "<2": {
+   "q10": -0.6958,
+   "q90": 0.9357,
+   "n": 5550,
+   "crossfit_80pct_coverage": 0.8
+  },
+  "2-5": {
+   "q10": -1.1213,
+   "q90": 1.1566,
+   "n": 2768,
+   "crossfit_80pct_coverage": 0.789
+  },
+  "5-20": {
+   "q10": -0.9529,
+   "q90": 1.0471,
+   "n": 3660,
+   "crossfit_80pct_coverage": 0.801
+  },
+  "20-100": {
+   "q10": -0.863,
+   "q90": 0.6124,
+   "n": 3167,
+   "crossfit_80pct_coverage": 0.792
+  },
+  "100-1000": {
+   "q10": -0.7421,
+   "q90": 0.5329,
+   "n": 913,
+   "crossfit_80pct_coverage": 0.802
+  },
+  ">=1000": {
+   "q10": -0.4725,
+   "q90": 0.2919,
+   "n": 196,
+   "crossfit_80pct_coverage": 0.786
+  }
+ },
+ "validation": {
+  "design": "rolling origin 2015-12..2026-09, coefficients refit each year on data <= origin; skill = 1 - MAE_log(PERS) / MAE_log(10-year climatology); 90% CI = year-block bootstrap; peak = Apr, May, Oct, Nov",
+  "skill": {
+   "country_h1": {
+    "skill_pct": 7.8,
+    "ci90_pct": [
+     1.5,
+     13.1
+    ],
+    "MAE_log": 0.363,
+    "MAE_log_clim": 0.394,
+    "MdAPE_pct_y_ge_20": 31.5,
+    "n": 130
+   },
+   "country_h1_peak": {
+    "skill_pct": 11.7,
+    "ci90_pct": [
+     0.3,
+     20.0
+    ],
+    "MAE_log": 0.377,
+    "MAE_log_clim": 0.427,
+    "MdAPE_pct_y_ge_20": 32.0,
+    "n": 43
+   },
+   "country_h2": {
+    "skill_pct": 5.7,
+    "ci90_pct": [
+     0.3,
+     10.5
+    ],
+    "MAE_log": 0.373,
+    "MAE_log_clim": 0.396,
+    "MdAPE_pct_y_ge_20": 30.4,
+    "n": 129
+   },
+   "country_h2_peak": {
+    "skill_pct": 9.9,
+    "ci90_pct": [
+     1.5,
+     16.8
+    ],
+    "MAE_log": 0.385,
+    "MAE_log_clim": 0.427,
+    "MdAPE_pct_y_ge_20": 31.7,
+    "n": 43
+   },
+   "country_h3": {
+    "skill_pct": 4.1,
+    "ci90_pct": [
+     -1.1,
+     9.0
+    ],
+    "MAE_log": 0.379,
+    "MAE_log_clim": 0.396,
+    "MdAPE_pct_y_ge_20": 32.0,
+    "n": 128
+   },
+   "country_h3_peak": {
+    "skill_pct": 6.8,
+    "ci90_pct": [
+     -2.6,
+     15.2
+    ],
+    "MAE_log": 0.398,
+    "MAE_log_clim": 0.427,
+    "MdAPE_pct_y_ge_20": 32.3,
+    "n": 43
+   },
+   "cell1_h1": {
+    "skill_pct": 5.2,
+    "ci90_pct": [
+     3.5,
+     6.9
+    ],
+    "MAE_log": 0.538,
+    "MAE_log_clim": 0.568,
+    "MdAPE_pct_y_ge_20": 38.0,
+    "n": 5330
+   },
+   "cell1_h1_peak": {
+    "skill_pct": 7.5,
+    "ci90_pct": [
+     5.0,
+     10.1
+    ],
+    "MAE_log": 0.584,
+    "MAE_log_clim": 0.632,
+    "MdAPE_pct_y_ge_20": 45.8,
+    "n": 1763
+   },
+   "cell1_h2": {
+    "skill_pct": 1.9,
+    "ci90_pct": [
+     0.4,
+     3.5
+    ],
+    "MAE_log": 0.558,
+    "MAE_log_clim": 0.569,
+    "MdAPE_pct_y_ge_20": 38.9,
+    "n": 5289
+   },
+   "cell1_h2_peak": {
+    "skill_pct": 2.7,
+    "ci90_pct": [
+     0.2,
+     5.3
+    ],
+    "MAE_log": 0.615,
+    "MAE_log_clim": 0.632,
+    "MdAPE_pct_y_ge_20": 44.9,
+    "n": 1763
+   },
+   "cell1_h3": {
+    "skill_pct": 1.2,
+    "ci90_pct": [
+     -0.2,
+     2.7
+    ],
+    "MAE_log": 0.561,
+    "MAE_log_clim": 0.568,
+    "MdAPE_pct_y_ge_20": 40.1,
+    "n": 5248
+   },
+   "cell1_h3_peak": {
+    "skill_pct": 2.5,
+    "ci90_pct": [
+     -0.1,
+     5.1
+    ],
+    "MAE_log": 0.616,
+    "MAE_log_clim": 0.632,
+    "MdAPE_pct_y_ge_20": 45.7,
+    "n": 1763
+   }
+  },
+  "crossfit_coverage_by_level_h": {
+   "cell1_h1": 0.803,
+   "cell1_h2": 0.796,
+   "cell1_h3": 0.794,
+   "country_h1": 0.738,
+   "country_h2": 0.752,
+   "country_h3": 0.734
+  },
+  "caveat": "Harmonization weights were fit on 2012-2022, which overlaps the test years (same for every model). Bands validated on Pakistan and 1-degree cells; for small drawn areas they are an extrapolation."
+ }
+}

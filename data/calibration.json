@@ -1,0 +1,4882 @@
+{
+ "generated_by": "pipeline/build_harmonized.py",
+ "unit": "MODIS-equivalent detections (Terra+Aqua, FIRMS MODIS C6.1, conf>=30, non-static)",
+ "method": "w = P_aqua[FRP bin, daynight] * f[daynight, month-of-year] * L[1deg cell, daynight, season] * f_sat / n_active_viirs_sats; FRP bin uses frp / frp_scale[sat]; any AOI total = SUM(w_modis_eq). Uncertainty: validation.band_by_count (band on log1p of the AOI-month total, chosen by its predicted count). docs/plan.md \u00a73",
+ "fit_window": [
+  "2012-01-20",
+  "2022-09-30"
+ ],
+ "excluded_windows": [
+  {
+   "label": "S-NPP outage (VIIRS C2 BA guide v1.1 \u00a76)",
+   "satellite": "N",
+   "start": "2022-07-27",
+   "end": "2022-08-10"
+  },
+  {
+   "label": "Aqua FMU outage (MODIS C6.1 guide \u00a77.2.4)",
+   "satellite": "Aqua",
+   "start": "2020-08-16",
+   "end": "2020-09-02"
+  }
+ ],
+ "fit_set_also_excludes": "(date, daynight) where S-NPP is inactive (data/no_data_days.csv)",
+ "filters": {
+  "modis_conf_min": 30,
+  "viirs_conf": [
+   "n",
+   "h"
+  ],
+  "static_mask": "0.01deg cells with >5 type!=0 VIIRS SP detections (all years) + 0.01deg cells with >=1 MODIS type!=0 detection 2018+; one mask for all rows",
+  "static_info": {
+   "viirs_cells": 190,
+   "modis_cells": 1262,
+   "union_cells": 1443,
+   "typed_nonzero_outside_mask": 834
+  }
+ },
+ "match_radius_km": 1.5,
+ "shrinkage_k": 200,
+ "frp_bins_mw": [
+  0,
+  1,
+  2,
+  4,
+  8,
+  16,
+  32,
+  null
+ ],
+ "P_aqua": [
+  {
+   "frp_bin": "<1",
+   "daynight": "D",
+   "value": 0.011433
+  },
+  {
+   "frp_bin": "<1",
+   "daynight": "N",
+   "value": 0.01178
+  },
+  {
+   "frp_bin": "1-2",
+   "daynight": "D",
+   "value": 0.023931
+  },
+  {
+   "frp_bin": "1-2",
+   "daynight": "N",
+   "value": 0.041147
+  },
+  {
+   "frp_bin": "2-4",
+   "daynight": "D",
+   "value": 0.044303
+  },
+  {
+   "frp_bin": "2-4",
+   "daynight": "N",
+   "value": 0.119992
+  },
+  {
+   "frp_bin": "4-8",
+   "daynight": "D",
+   "value": 0.083379
+  },
+  {
+   "frp_bin": "4-8",
+   "daynight": "N",
+   "value": 0.245707
+  },
+  {
+   "frp_bin": "8-16",
+   "daynight": "D",
+   "value": 0.130125
+  },
+  {
+   "frp_bin": "8-16",
+   "daynight": "N",
+   "value": 0.386564
+  },
+  {
+   "frp_bin": "16-32",
+   "daynight": "D",
+   "value": 0.204883
+  },
+  {
+   "frp_bin": "16-32",
+   "daynight": "N",
+   "value": 0.538922
+  },
+  {
+   "frp_bin": ">=32",
+   "daynight": "D",
+   "value": 0.319988
+  },
+  {
+   "frp_bin": ">=32",
+   "daynight": "N",
+   "value": 0.482759
+  }
+ ],
+ "P_aqua_n": [
+  {
+   "frp_bin": "<1",
+   "daynight": "D",
+   "value": 1312.0
+  },
+  {
+   "frp_bin": "<1",
+   "daynight": "N",
+   "value": 21392.0
+  },
+  {
+   "frp_bin": "1-2",
+   "daynight": "D",
+   "value": 35351.0
+  },
+  {
+   "frp_bin": "1-2",
+   "daynight": "N",
+   "value": 22772.0
+  },
+  {
+   "frp_bin": "2-4",
+   "daynight": "D",
+   "value": 156218.0
+  },
+  {
+   "frp_bin": "2-4",
+   "daynight": "N",
+   "value": 14476.0
+  },
+  {
+   "frp_bin": "4-8",
+   "daynight": "D",
+   "value": 147460.0
+  },
+  {
+   "frp_bin": "4-8",
+   "daynight": "N",
+   "value": 4892.0
+  },
+  {
+   "frp_bin": "8-16",
+   "daynight": "D",
+   "value": 59289.0
+  },
+  {
+   "frp_bin": "8-16",
+   "daynight": "N",
+   "value": 908.0
+  },
+  {
+   "frp_bin": "16-32",
+   "daynight": "D",
+   "value": 14130.0
+  },
+  {
+   "frp_bin": "16-32",
+   "daynight": "N",
+   "value": 167.0
+  },
+  {
+   "frp_bin": ">=32",
+   "daynight": "D",
+   "value": 3222.0
+  },
+  {
+   "frp_bin": ">=32",
+   "daynight": "N",
+   "value": 58.0
+  }
+ ],
+ "f": [
+  {
+   "daynight": "D",
+   "moy": 1,
+   "value": 4.666764
+  },
+  {
+   "daynight": "D",
+   "moy": 2,
+   "value": 4.331615
+  },
+  {
+   "daynight": "D",
+   "moy": 3,
+   "value": 4.070387
+  },
+  {
+   "daynight": "D",
+   "moy": 4,
+   "value": 3.457773
+  },
+  {
+   "daynight": "D",
+   "moy": 5,
+   "value": 2.608302
+  },
+  {
+   "daynight": "D",
+   "moy": 6,
+   "value": 1.662593
+  },
+  {
+   "daynight": "D",
+   "moy": 7,
+   "value": 2.250493
+  },
+  {
+   "daynight": "D",
+   "moy": 8,
+   "value": 6.097752
+  },
+  {
+   "daynight": "D",
+   "moy": 9,
+   "value": 2.344545
+  },
+  {
+   "daynight": "D",
+   "moy": 10,
+   "value": 2.476082
+  },
+  {
+   "daynight": "D",
+   "moy": 11,
+   "value": 2.853631
+  },
+  {
+   "daynight": "D",
+   "moy": 12,
+   "value": 3.709891
+  },
+  {
+   "daynight": "N",
+   "moy": 1,
+   "value": 0.491677
+  },
+  {
+   "daynight": "N",
+   "moy": 2,
+   "value": 0.838375
+  },
+  {
+   "daynight": "N",
+   "moy": 3,
+   "value": 2.415987
+  },
+  {
+   "daynight": "N",
+   "moy": 4,
+   "value": 2.446944
+  },
+  {
+   "daynight": "N",
+   "moy": 5,
+   "value": 1.186939
+  },
+  {
+   "daynight": "N",
+   "moy": 6,
+   "value": 0.947143
+  },
+  {
+   "daynight": "N",
+   "moy": 7,
+   "value": 1.128588
+  },
+  {
+   "daynight": "N",
+   "moy": 8,
+   "value": 1.183232
+  },
+  {
+   "daynight": "N",
+   "moy": 9,
+   "value": 0.651166
+  },
+  {
+   "daynight": "N",
+   "moy": 10,
+   "value": 0.626174
+  },
+  {
+   "daynight": "N",
+   "moy": 11,
+   "value": 0.573103
+  },
+  {
+   "daynight": "N",
+   "moy": 12,
+   "value": 0.457871
+  }
+ ],
+ "L": [
+  {
+   "cell1": "24_66",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.010228
+  },
+  {
+   "cell1": "24_66",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.968089
+  },
+  {
+   "cell1": "24_66",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.996385
+  },
+  {
+   "cell1": "24_66",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.00494
+  },
+  {
+   "cell1": "24_66",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.0029
+  },
+  {
+   "cell1": "24_66",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.981077
+  },
+  {
+   "cell1": "24_66",
+   "daynight": "N",
+   "season": "SON",
+   "value": 1.001417
+  },
+  {
+   "cell1": "24_67",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.999955
+  },
+  {
+   "cell1": "24_67",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.948015
+  },
+  {
+   "cell1": "24_67",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.00375
+  },
+  {
+   "cell1": "24_67",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.969312
+  },
+  {
+   "cell1": "24_67",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.017318
+  },
+  {
+   "cell1": "24_67",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.999221
+  },
+  {
+   "cell1": "24_68",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.054828
+  },
+  {
+   "cell1": "24_68",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.921512
+  },
+  {
+   "cell1": "24_68",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.962007
+  },
+  {
+   "cell1": "24_68",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.98176
+  },
+  {
+   "cell1": "24_68",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.035857
+  },
+  {
+   "cell1": "24_68",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 1.087746
+  },
+  {
+   "cell1": "24_69",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.806042
+  },
+  {
+   "cell1": "24_69",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.935923
+  },
+  {
+   "cell1": "24_69",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.015969
+  },
+  {
+   "cell1": "24_69",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.984408
+  },
+  {
+   "cell1": "24_69",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.009391
+  },
+  {
+   "cell1": "24_69",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 1.01227
+  },
+  {
+   "cell1": "24_70",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.990039
+  },
+  {
+   "cell1": "24_70",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.003019
+  },
+  {
+   "cell1": "24_70",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.016239
+  },
+  {
+   "cell1": "25_61",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.005923
+  },
+  {
+   "cell1": "25_61",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.995882
+  },
+  {
+   "cell1": "25_62",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.984984
+  },
+  {
+   "cell1": "25_62",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.967122
+  },
+  {
+   "cell1": "25_62",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.990367
+  },
+  {
+   "cell1": "25_63",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.002516
+  },
+  {
+   "cell1": "25_63",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.005
+  },
+  {
+   "cell1": "25_64",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.002796
+  },
+  {
+   "cell1": "25_66",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.938316
+  },
+  {
+   "cell1": "25_66",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.966451
+  },
+  {
+   "cell1": "25_66",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.970279
+  },
+  {
+   "cell1": "25_67",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.959447
+  },
+  {
+   "cell1": "25_67",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.896048
+  },
+  {
+   "cell1": "25_67",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.992561
+  },
+  {
+   "cell1": "25_67",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.987974
+  },
+  {
+   "cell1": "25_67",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.001265
+  },
+  {
+   "cell1": "25_67",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.992686
+  },
+  {
+   "cell1": "25_68",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.260829
+  },
+  {
+   "cell1": "25_68",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.06692
+  },
+  {
+   "cell1": "25_68",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.902567
+  },
+  {
+   "cell1": "25_68",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.731985
+  },
+  {
+   "cell1": "25_68",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.998246
+  },
+  {
+   "cell1": "25_68",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 1.022813
+  },
+  {
+   "cell1": "25_68",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.993008
+  },
+  {
+   "cell1": "25_68",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.986792
+  },
+  {
+   "cell1": "25_69",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.198671
+  },
+  {
+   "cell1": "25_69",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.994277
+  },
+  {
+   "cell1": "25_69",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.049323
+  },
+  {
+   "cell1": "25_69",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.911857
+  },
+  {
+   "cell1": "25_69",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.050924
+  },
+  {
+   "cell1": "25_69",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 1.125925
+  },
+  {
+   "cell1": "25_69",
+   "daynight": "N",
+   "season": "SON",
+   "value": 1.002695
+  },
+  {
+   "cell1": "25_70",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.004622
+  },
+  {
+   "cell1": "25_70",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.965705
+  },
+  {
+   "cell1": "25_70",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.035571
+  },
+  {
+   "cell1": "25_70",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.002232
+  },
+  {
+   "cell1": "26_62",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.989772
+  },
+  {
+   "cell1": "26_62",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.962952
+  },
+  {
+   "cell1": "26_62",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.018339
+  },
+  {
+   "cell1": "26_63",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.010144
+  },
+  {
+   "cell1": "26_63",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.99458
+  },
+  {
+   "cell1": "26_64",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.99447
+  },
+  {
+   "cell1": "26_64",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.999392
+  },
+  {
+   "cell1": "26_64",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.988166
+  },
+  {
+   "cell1": "26_64",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.994328
+  },
+  {
+   "cell1": "26_65",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.007941
+  },
+  {
+   "cell1": "26_65",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.981364
+  },
+  {
+   "cell1": "26_65",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.000764
+  },
+  {
+   "cell1": "26_65",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.002362
+  },
+  {
+   "cell1": "26_65",
+   "daynight": "N",
+   "season": "SON",
+   "value": 1.004871
+  },
+  {
+   "cell1": "26_66",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.966916
+  },
+  {
+   "cell1": "26_66",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.013445
+  },
+  {
+   "cell1": "26_66",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.012974
+  },
+  {
+   "cell1": "26_67",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.743135
+  },
+  {
+   "cell1": "26_67",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.854587
+  },
+  {
+   "cell1": "26_67",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.938277
+  },
+  {
+   "cell1": "26_67",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.945383
+  },
+  {
+   "cell1": "26_67",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.01775
+  },
+  {
+   "cell1": "26_67",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.928659
+  },
+  {
+   "cell1": "26_67",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.983509
+  },
+  {
+   "cell1": "26_67",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.998706
+  },
+  {
+   "cell1": "26_68",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.613033
+  },
+  {
+   "cell1": "26_68",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.654755
+  },
+  {
+   "cell1": "26_68",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.974963
+  },
+  {
+   "cell1": "26_68",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.72952
+  },
+  {
+   "cell1": "26_68",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.004499
+  },
+  {
+   "cell1": "26_68",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 1.019996
+  },
+  {
+   "cell1": "26_68",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 1.003338
+  },
+  {
+   "cell1": "26_68",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.965951
+  },
+  {
+   "cell1": "26_69",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.813556
+  },
+  {
+   "cell1": "26_69",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.869443
+  },
+  {
+   "cell1": "26_69",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.371024
+  },
+  {
+   "cell1": "26_69",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.933312
+  },
+  {
+   "cell1": "26_69",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.013916
+  },
+  {
+   "cell1": "26_69",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.956115
+  },
+  {
+   "cell1": "26_69",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.999115
+  },
+  {
+   "cell1": "26_69",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.991629
+  },
+  {
+   "cell1": "27_63",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.999047
+  },
+  {
+   "cell1": "27_65",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.964402
+  },
+  {
+   "cell1": "27_65",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.036123
+  },
+  {
+   "cell1": "27_65",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.004689
+  },
+  {
+   "cell1": "27_66",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.022243
+  },
+  {
+   "cell1": "27_66",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.01892
+  },
+  {
+   "cell1": "27_66",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.00396
+  },
+  {
+   "cell1": "27_66",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.00969
+  },
+  {
+   "cell1": "27_66",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 1.004156
+  },
+  {
+   "cell1": "27_67",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.879505
+  },
+  {
+   "cell1": "27_67",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.972388
+  },
+  {
+   "cell1": "27_67",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.773241
+  },
+  {
+   "cell1": "27_67",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.92222
+  },
+  {
+   "cell1": "27_67",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.999139
+  },
+  {
+   "cell1": "27_67",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.898994
+  },
+  {
+   "cell1": "27_67",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.900571
+  },
+  {
+   "cell1": "27_67",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.992112
+  },
+  {
+   "cell1": "27_68",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.825448
+  },
+  {
+   "cell1": "27_68",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.818589
+  },
+  {
+   "cell1": "27_68",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.915609
+  },
+  {
+   "cell1": "27_68",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.083873
+  },
+  {
+   "cell1": "27_68",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.019794
+  },
+  {
+   "cell1": "27_68",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 1.005425
+  },
+  {
+   "cell1": "27_68",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.97571
+  },
+  {
+   "cell1": "27_68",
+   "daynight": "N",
+   "season": "SON",
+   "value": 1.007323
+  },
+  {
+   "cell1": "27_69",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.180005
+  },
+  {
+   "cell1": "27_69",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.069289
+  },
+  {
+   "cell1": "27_69",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.952238
+  },
+  {
+   "cell1": "27_69",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.938173
+  },
+  {
+   "cell1": "27_69",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.00166
+  },
+  {
+   "cell1": "27_69",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 1.098757
+  },
+  {
+   "cell1": "27_69",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.986657
+  },
+  {
+   "cell1": "27_69",
+   "daynight": "N",
+   "season": "SON",
+   "value": 1.007789
+  },
+  {
+   "cell1": "27_70",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.03
+  },
+  {
+   "cell1": "27_70",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.005
+  },
+  {
+   "cell1": "27_71",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.005
+  },
+  {
+   "cell1": "28_61",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.998779
+  },
+  {
+   "cell1": "28_61",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.004019
+  },
+  {
+   "cell1": "28_63",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.005
+  },
+  {
+   "cell1": "28_64",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.025
+  },
+  {
+   "cell1": "28_65",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.004181
+  },
+  {
+   "cell1": "28_66",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.937022
+  },
+  {
+   "cell1": "28_66",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.004304
+  },
+  {
+   "cell1": "28_66",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.993401
+  },
+  {
+   "cell1": "28_67",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.030552
+  },
+  {
+   "cell1": "28_67",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.001129
+  },
+  {
+   "cell1": "28_67",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.88194
+  },
+  {
+   "cell1": "28_67",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.965382
+  },
+  {
+   "cell1": "28_67",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.851764
+  },
+  {
+   "cell1": "28_67",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.91964
+  },
+  {
+   "cell1": "28_67",
+   "daynight": "N",
+   "season": "SON",
+   "value": 1.009404
+  },
+  {
+   "cell1": "28_68",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.908343
+  },
+  {
+   "cell1": "28_68",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.073656
+  },
+  {
+   "cell1": "28_68",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.331982
+  },
+  {
+   "cell1": "28_68",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.270057
+  },
+  {
+   "cell1": "28_68",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.766937
+  },
+  {
+   "cell1": "28_68",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.908913
+  },
+  {
+   "cell1": "28_69",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.405463
+  },
+  {
+   "cell1": "28_69",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.048491
+  },
+  {
+   "cell1": "28_69",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.984302
+  },
+  {
+   "cell1": "28_69",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.051639
+  },
+  {
+   "cell1": "28_69",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.994814
+  },
+  {
+   "cell1": "28_69",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.850441
+  },
+  {
+   "cell1": "28_69",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.89194
+  },
+  {
+   "cell1": "28_69",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.9831
+  },
+  {
+   "cell1": "28_70",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.113014
+  },
+  {
+   "cell1": "28_70",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.97599
+  },
+  {
+   "cell1": "28_70",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.125942
+  },
+  {
+   "cell1": "28_70",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.899804
+  },
+  {
+   "cell1": "28_70",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.139459
+  },
+  {
+   "cell1": "28_70",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 1.631299
+  },
+  {
+   "cell1": "28_70",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 1.001819
+  },
+  {
+   "cell1": "28_70",
+   "daynight": "N",
+   "season": "SON",
+   "value": 1.004106
+  },
+  {
+   "cell1": "28_71",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.996329
+  },
+  {
+   "cell1": "28_71",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.102895
+  },
+  {
+   "cell1": "28_71",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.05249
+  },
+  {
+   "cell1": "28_71",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.989877
+  },
+  {
+   "cell1": "28_71",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.066556
+  },
+  {
+   "cell1": "28_71",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 1.21296
+  },
+  {
+   "cell1": "28_71",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 1.004987
+  },
+  {
+   "cell1": "28_72",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.035
+  },
+  {
+   "cell1": "28_72",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.005
+  },
+  {
+   "cell1": "29_61",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.001355
+  },
+  {
+   "cell1": "29_64",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.005
+  },
+  {
+   "cell1": "29_67",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.982971
+  },
+  {
+   "cell1": "29_67",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.975956
+  },
+  {
+   "cell1": "29_67",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.987477
+  },
+  {
+   "cell1": "29_67",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.982776
+  },
+  {
+   "cell1": "29_67",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.995965
+  },
+  {
+   "cell1": "29_68",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.964973
+  },
+  {
+   "cell1": "29_68",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.930422
+  },
+  {
+   "cell1": "29_68",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.004969
+  },
+  {
+   "cell1": "29_68",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.993744
+  },
+  {
+   "cell1": "29_68",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.001824
+  },
+  {
+   "cell1": "29_68",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.980065
+  },
+  {
+   "cell1": "29_68",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 1.005423
+  },
+  {
+   "cell1": "29_69",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.989261
+  },
+  {
+   "cell1": "29_69",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.914568
+  },
+  {
+   "cell1": "29_69",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.989907
+  },
+  {
+   "cell1": "29_69",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.023967
+  },
+  {
+   "cell1": "29_69",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.00608
+  },
+  {
+   "cell1": "29_69",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.919317
+  },
+  {
+   "cell1": "29_69",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.946453
+  },
+  {
+   "cell1": "29_69",
+   "daynight": "N",
+   "season": "SON",
+   "value": 1.020508
+  },
+  {
+   "cell1": "29_70",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.042473
+  },
+  {
+   "cell1": "29_70",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.935086
+  },
+  {
+   "cell1": "29_70",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.372319
+  },
+  {
+   "cell1": "29_70",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.005993
+  },
+  {
+   "cell1": "29_70",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.038715
+  },
+  {
+   "cell1": "29_70",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 1.166858
+  },
+  {
+   "cell1": "29_70",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.985923
+  },
+  {
+   "cell1": "29_71",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.93741
+  },
+  {
+   "cell1": "29_71",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.186663
+  },
+  {
+   "cell1": "29_71",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.994485
+  },
+  {
+   "cell1": "29_71",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.090612
+  },
+  {
+   "cell1": "29_71",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.009906
+  },
+  {
+   "cell1": "29_71",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 1.218226
+  },
+  {
+   "cell1": "29_71",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 1.008607
+  },
+  {
+   "cell1": "29_72",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.064274
+  },
+  {
+   "cell1": "29_72",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.088194
+  },
+  {
+   "cell1": "29_72",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.867304
+  },
+  {
+   "cell1": "29_72",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.050032
+  },
+  {
+   "cell1": "29_72",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 1.167525
+  },
+  {
+   "cell1": "29_72",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.998685
+  },
+  {
+   "cell1": "29_73",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.994459
+  },
+  {
+   "cell1": "29_73",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.202757
+  },
+  {
+   "cell1": "29_73",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.070174
+  },
+  {
+   "cell1": "29_73",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.096929
+  },
+  {
+   "cell1": "29_73",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 1.080831
+  },
+  {
+   "cell1": "30_66",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.000335
+  },
+  {
+   "cell1": "30_67",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.980928
+  },
+  {
+   "cell1": "30_67",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.972735
+  },
+  {
+   "cell1": "30_67",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.007211
+  },
+  {
+   "cell1": "30_67",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.009503
+  },
+  {
+   "cell1": "30_67",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.982488
+  },
+  {
+   "cell1": "30_67",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.94904
+  },
+  {
+   "cell1": "30_68",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.955321
+  },
+  {
+   "cell1": "30_68",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.988551
+  },
+  {
+   "cell1": "30_68",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.99678
+  },
+  {
+   "cell1": "30_68",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.004785
+  },
+  {
+   "cell1": "30_68",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.988069
+  },
+  {
+   "cell1": "30_68",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.999603
+  },
+  {
+   "cell1": "30_68",
+   "daynight": "N",
+   "season": "SON",
+   "value": 1.014498
+  },
+  {
+   "cell1": "30_69",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.999371
+  },
+  {
+   "cell1": "30_69",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.033182
+  },
+  {
+   "cell1": "30_69",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.000752
+  },
+  {
+   "cell1": "30_69",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.98987
+  },
+  {
+   "cell1": "30_69",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.99092
+  },
+  {
+   "cell1": "30_69",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.974238
+  },
+  {
+   "cell1": "30_69",
+   "daynight": "N",
+   "season": "SON",
+   "value": 1.008605
+  },
+  {
+   "cell1": "30_70",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.217527
+  },
+  {
+   "cell1": "30_70",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.110899
+  },
+  {
+   "cell1": "30_70",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.086032
+  },
+  {
+   "cell1": "30_70",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.154587
+  },
+  {
+   "cell1": "30_70",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.997633
+  },
+  {
+   "cell1": "30_70",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.908892
+  },
+  {
+   "cell1": "30_70",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 1.011004
+  },
+  {
+   "cell1": "30_70",
+   "daynight": "N",
+   "season": "SON",
+   "value": 1.009329
+  },
+  {
+   "cell1": "30_71",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.115708
+  },
+  {
+   "cell1": "30_71",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.153048
+  },
+  {
+   "cell1": "30_71",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.012643
+  },
+  {
+   "cell1": "30_71",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.073748
+  },
+  {
+   "cell1": "30_71",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 1.128986
+  },
+  {
+   "cell1": "30_71",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.994916
+  },
+  {
+   "cell1": "30_71",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.99898
+  },
+  {
+   "cell1": "30_72",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.892716
+  },
+  {
+   "cell1": "30_72",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.214754
+  },
+  {
+   "cell1": "30_72",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.908966
+  },
+  {
+   "cell1": "30_72",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.046334
+  },
+  {
+   "cell1": "30_72",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 1.096161
+  },
+  {
+   "cell1": "30_72",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.996319
+  },
+  {
+   "cell1": "30_73",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.938064
+  },
+  {
+   "cell1": "30_73",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.041785
+  },
+  {
+   "cell1": "30_73",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.748406
+  },
+  {
+   "cell1": "30_73",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.017699
+  },
+  {
+   "cell1": "30_73",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 1.050661
+  },
+  {
+   "cell1": "30_73",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 1.04255
+  },
+  {
+   "cell1": "30_74",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.03727
+  },
+  {
+   "cell1": "30_74",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.937254
+  },
+  {
+   "cell1": "30_74",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.861527
+  },
+  {
+   "cell1": "30_74",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.934488
+  },
+  {
+   "cell1": "30_74",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 1.008943
+  },
+  {
+   "cell1": "30_74",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 1.009064
+  },
+  {
+   "cell1": "31_69",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.979423
+  },
+  {
+   "cell1": "31_69",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.959558
+  },
+  {
+   "cell1": "31_69",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.996017
+  },
+  {
+   "cell1": "31_69",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.005031
+  },
+  {
+   "cell1": "31_69",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.992507
+  },
+  {
+   "cell1": "31_69",
+   "daynight": "N",
+   "season": "SON",
+   "value": 1.008784
+  },
+  {
+   "cell1": "31_70",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.112902
+  },
+  {
+   "cell1": "31_70",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.10685
+  },
+  {
+   "cell1": "31_70",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.027311
+  },
+  {
+   "cell1": "31_70",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.752149
+  },
+  {
+   "cell1": "31_70",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.984253
+  },
+  {
+   "cell1": "31_70",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.902907
+  },
+  {
+   "cell1": "31_70",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.998009
+  },
+  {
+   "cell1": "31_70",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.992921
+  },
+  {
+   "cell1": "31_71",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.94755
+  },
+  {
+   "cell1": "31_71",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.950332
+  },
+  {
+   "cell1": "31_71",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.263654
+  },
+  {
+   "cell1": "31_71",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.927608
+  },
+  {
+   "cell1": "31_71",
+   "daynight": "N",
+   "season": "SON",
+   "value": 1.001494
+  },
+  {
+   "cell1": "31_72",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.867159
+  },
+  {
+   "cell1": "31_72",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.91034
+  },
+  {
+   "cell1": "31_72",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.022679
+  },
+  {
+   "cell1": "31_72",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.842878
+  },
+  {
+   "cell1": "31_72",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.003126
+  },
+  {
+   "cell1": "31_72",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 1.020362
+  },
+  {
+   "cell1": "31_73",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.85764
+  },
+  {
+   "cell1": "31_73",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.957665
+  },
+  {
+   "cell1": "31_73",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.034648
+  },
+  {
+   "cell1": "31_73",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.928485
+  },
+  {
+   "cell1": "31_73",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.002568
+  },
+  {
+   "cell1": "31_73",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.998972
+  },
+  {
+   "cell1": "31_73",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.978168
+  },
+  {
+   "cell1": "31_74",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.955204
+  },
+  {
+   "cell1": "31_74",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.034343
+  },
+  {
+   "cell1": "31_74",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.027694
+  },
+  {
+   "cell1": "31_74",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.116967
+  },
+  {
+   "cell1": "31_74",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.033393
+  },
+  {
+   "cell1": "31_74",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.989773
+  },
+  {
+   "cell1": "31_74",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 1.018628
+  },
+  {
+   "cell1": "32_69",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.011263
+  },
+  {
+   "cell1": "32_69",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.913801
+  },
+  {
+   "cell1": "32_69",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.009281
+  },
+  {
+   "cell1": "32_69",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.981585
+  },
+  {
+   "cell1": "32_69",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.977022
+  },
+  {
+   "cell1": "32_69",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.978466
+  },
+  {
+   "cell1": "32_69",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.992343
+  },
+  {
+   "cell1": "32_70",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.988556
+  },
+  {
+   "cell1": "32_70",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.920009
+  },
+  {
+   "cell1": "32_70",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.045599
+  },
+  {
+   "cell1": "32_70",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.981496
+  },
+  {
+   "cell1": "32_70",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.980197
+  },
+  {
+   "cell1": "32_70",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.982502
+  },
+  {
+   "cell1": "32_70",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.98606
+  },
+  {
+   "cell1": "32_70",
+   "daynight": "N",
+   "season": "SON",
+   "value": 1.033238
+  },
+  {
+   "cell1": "32_71",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.95088
+  },
+  {
+   "cell1": "32_71",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.894001
+  },
+  {
+   "cell1": "32_71",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.133423
+  },
+  {
+   "cell1": "32_71",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.064091
+  },
+  {
+   "cell1": "32_71",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.012345
+  },
+  {
+   "cell1": "32_71",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 1.12972
+  },
+  {
+   "cell1": "32_71",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 1.040485
+  },
+  {
+   "cell1": "32_71",
+   "daynight": "N",
+   "season": "SON",
+   "value": 1.002482
+  },
+  {
+   "cell1": "32_72",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.907445
+  },
+  {
+   "cell1": "32_72",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.007167
+  },
+  {
+   "cell1": "32_72",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.06677
+  },
+  {
+   "cell1": "32_72",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.939775
+  },
+  {
+   "cell1": "32_72",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.023262
+  },
+  {
+   "cell1": "32_72",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.938426
+  },
+  {
+   "cell1": "32_72",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 1.021216
+  },
+  {
+   "cell1": "32_72",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.992154
+  },
+  {
+   "cell1": "32_73",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.837821
+  },
+  {
+   "cell1": "32_73",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.985006
+  },
+  {
+   "cell1": "32_73",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.010723
+  },
+  {
+   "cell1": "32_73",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.951744
+  },
+  {
+   "cell1": "32_73",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 1.081301
+  },
+  {
+   "cell1": "32_73",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.987823
+  },
+  {
+   "cell1": "32_74",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.855619
+  },
+  {
+   "cell1": "32_74",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.960912
+  },
+  {
+   "cell1": "32_74",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.002784
+  },
+  {
+   "cell1": "32_74",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.042369
+  },
+  {
+   "cell1": "32_74",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.996983
+  },
+  {
+   "cell1": "32_74",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 1.078775
+  },
+  {
+   "cell1": "32_74",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 1.013214
+  },
+  {
+   "cell1": "32_74",
+   "daynight": "N",
+   "season": "SON",
+   "value": 1.0
+  },
+  {
+   "cell1": "32_75",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.011905
+  },
+  {
+   "cell1": "32_75",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.070283
+  },
+  {
+   "cell1": "32_75",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.015325
+  },
+  {
+   "cell1": "32_75",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.007473
+  },
+  {
+   "cell1": "32_75",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 1.069161
+  },
+  {
+   "cell1": "32_75",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.99948
+  },
+  {
+   "cell1": "33_69",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.018608
+  },
+  {
+   "cell1": "33_69",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.004459
+  },
+  {
+   "cell1": "33_69",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.027958
+  },
+  {
+   "cell1": "33_69",
+   "daynight": "N",
+   "season": "SON",
+   "value": 1.000563
+  },
+  {
+   "cell1": "33_70",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.971716
+  },
+  {
+   "cell1": "33_70",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.968111
+  },
+  {
+   "cell1": "33_70",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.020677
+  },
+  {
+   "cell1": "33_70",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.134067
+  },
+  {
+   "cell1": "33_70",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.909176
+  },
+  {
+   "cell1": "33_70",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.81865
+  },
+  {
+   "cell1": "33_70",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.982182
+  },
+  {
+   "cell1": "33_70",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.947954
+  },
+  {
+   "cell1": "33_71",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.972496
+  },
+  {
+   "cell1": "33_71",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.029893
+  },
+  {
+   "cell1": "33_71",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.212041
+  },
+  {
+   "cell1": "33_71",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.268479
+  },
+  {
+   "cell1": "33_71",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.001882
+  },
+  {
+   "cell1": "33_71",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.899226
+  },
+  {
+   "cell1": "33_71",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 1.090872
+  },
+  {
+   "cell1": "33_71",
+   "daynight": "N",
+   "season": "SON",
+   "value": 1.207347
+  },
+  {
+   "cell1": "33_72",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.903647
+  },
+  {
+   "cell1": "33_72",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.95999
+  },
+  {
+   "cell1": "33_72",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.099293
+  },
+  {
+   "cell1": "33_72",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.032147
+  },
+  {
+   "cell1": "33_72",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.004365
+  },
+  {
+   "cell1": "33_72",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.978706
+  },
+  {
+   "cell1": "33_72",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 1.115825
+  },
+  {
+   "cell1": "33_72",
+   "daynight": "N",
+   "season": "SON",
+   "value": 1.009534
+  },
+  {
+   "cell1": "33_73",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.824738
+  },
+  {
+   "cell1": "33_73",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.982028
+  },
+  {
+   "cell1": "33_73",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.199234
+  },
+  {
+   "cell1": "33_73",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.020205
+  },
+  {
+   "cell1": "33_73",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.926279
+  },
+  {
+   "cell1": "33_73",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.846224
+  },
+  {
+   "cell1": "33_73",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 1.116274
+  },
+  {
+   "cell1": "33_73",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.96219
+  },
+  {
+   "cell1": "33_74",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.007429
+  },
+  {
+   "cell1": "33_74",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.019313
+  },
+  {
+   "cell1": "33_74",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.061627
+  },
+  {
+   "cell1": "33_74",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.041879
+  },
+  {
+   "cell1": "33_74",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.999324
+  },
+  {
+   "cell1": "33_74",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.93684
+  },
+  {
+   "cell1": "33_74",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 1.019108
+  },
+  {
+   "cell1": "34_70",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.007995
+  },
+  {
+   "cell1": "34_70",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.002614
+  },
+  {
+   "cell1": "34_70",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 1.004915
+  },
+  {
+   "cell1": "34_70",
+   "daynight": "N",
+   "season": "SON",
+   "value": 1.003953
+  },
+  {
+   "cell1": "34_71",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.989317
+  },
+  {
+   "cell1": "34_71",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.916211
+  },
+  {
+   "cell1": "34_71",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.06811
+  },
+  {
+   "cell1": "34_71",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.02819
+  },
+  {
+   "cell1": "34_71",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.97666
+  },
+  {
+   "cell1": "34_71",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.955217
+  },
+  {
+   "cell1": "34_71",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.968057
+  },
+  {
+   "cell1": "34_71",
+   "daynight": "N",
+   "season": "SON",
+   "value": 1.017857
+  },
+  {
+   "cell1": "34_72",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.88986
+  },
+  {
+   "cell1": "34_72",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.034002
+  },
+  {
+   "cell1": "34_72",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.011248
+  },
+  {
+   "cell1": "34_72",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.995881
+  },
+  {
+   "cell1": "34_72",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.922261
+  },
+  {
+   "cell1": "34_72",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.861201
+  },
+  {
+   "cell1": "34_72",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 1.043474
+  },
+  {
+   "cell1": "34_72",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.987506
+  },
+  {
+   "cell1": "34_73",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.848053
+  },
+  {
+   "cell1": "34_73",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.944243
+  },
+  {
+   "cell1": "34_73",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.983852
+  },
+  {
+   "cell1": "34_73",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.207116
+  },
+  {
+   "cell1": "34_73",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.958908
+  },
+  {
+   "cell1": "34_73",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.903476
+  },
+  {
+   "cell1": "34_73",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 1.039648
+  },
+  {
+   "cell1": "34_73",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.959728
+  },
+  {
+   "cell1": "34_74",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.987892
+  },
+  {
+   "cell1": "34_74",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.002395
+  },
+  {
+   "cell1": "34_74",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.001759
+  },
+  {
+   "cell1": "34_74",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.97639
+  },
+  {
+   "cell1": "34_74",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 1.005235
+  },
+  {
+   "cell1": "34_74",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.990573
+  },
+  {
+   "cell1": "34_75",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.986342
+  },
+  {
+   "cell1": "34_75",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 1.009933
+  },
+  {
+   "cell1": "35_71",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 1.005865
+  },
+  {
+   "cell1": "35_71",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.000129
+  },
+  {
+   "cell1": "35_71",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.983712
+  },
+  {
+   "cell1": "35_71",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.027046
+  },
+  {
+   "cell1": "35_71",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.999584
+  },
+  {
+   "cell1": "35_71",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 1.020266
+  },
+  {
+   "cell1": "35_71",
+   "daynight": "N",
+   "season": "SON",
+   "value": 1.034354
+  },
+  {
+   "cell1": "35_72",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.966405
+  },
+  {
+   "cell1": "35_72",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.990253
+  },
+  {
+   "cell1": "35_72",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.997418
+  },
+  {
+   "cell1": "35_72",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.079314
+  },
+  {
+   "cell1": "35_72",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.993785
+  },
+  {
+   "cell1": "35_72",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.99385
+  },
+  {
+   "cell1": "35_72",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.966693
+  },
+  {
+   "cell1": "35_73",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.977929
+  },
+  {
+   "cell1": "35_73",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 1.004832
+  },
+  {
+   "cell1": "35_73",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.978605
+  },
+  {
+   "cell1": "35_73",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.031144
+  },
+  {
+   "cell1": "35_73",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 1.040801
+  },
+  {
+   "cell1": "35_73",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.973156
+  },
+  {
+   "cell1": "35_73",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.966622
+  },
+  {
+   "cell1": "35_73",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.981258
+  },
+  {
+   "cell1": "35_74",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.993712
+  },
+  {
+   "cell1": "35_74",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.996251
+  },
+  {
+   "cell1": "35_74",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.019026
+  },
+  {
+   "cell1": "35_74",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.988249
+  },
+  {
+   "cell1": "35_74",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 1.004732
+  },
+  {
+   "cell1": "35_75",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 1.005
+  },
+  {
+   "cell1": "35_75",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.008376
+  },
+  {
+   "cell1": "36_74",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.003384
+  },
+  {
+   "cell1": "36_75",
+   "daynight": "D",
+   "season": "SON",
+   "value": 1.005
+  },
+  {
+   "cell1": "24_66",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.992543
+  },
+  {
+   "cell1": "24_67",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.984123
+  },
+  {
+   "cell1": "24_67",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.989899
+  },
+  {
+   "cell1": "24_68",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.990777
+  },
+  {
+   "cell1": "24_68",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.994974
+  },
+  {
+   "cell1": "24_69",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.998556
+  },
+  {
+   "cell1": "24_69",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.999791
+  },
+  {
+   "cell1": "24_70",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.982813
+  },
+  {
+   "cell1": "24_70",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.998977
+  },
+  {
+   "cell1": "24_70",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.991413
+  },
+  {
+   "cell1": "24_70",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.999768
+  },
+  {
+   "cell1": "24_70",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.999288
+  },
+  {
+   "cell1": "25_61",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.99089
+  },
+  {
+   "cell1": "25_62",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.997617
+  },
+  {
+   "cell1": "25_62",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.999951
+  },
+  {
+   "cell1": "25_62",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.998411
+  },
+  {
+   "cell1": "25_62",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.998271
+  },
+  {
+   "cell1": "25_62",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.999848
+  },
+  {
+   "cell1": "25_63",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.992128
+  },
+  {
+   "cell1": "25_63",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.991486
+  },
+  {
+   "cell1": "25_63",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.999962
+  },
+  {
+   "cell1": "25_64",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.995126
+  },
+  {
+   "cell1": "25_65",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.996916
+  },
+  {
+   "cell1": "25_65",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.995881
+  },
+  {
+   "cell1": "25_65",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.999951
+  },
+  {
+   "cell1": "25_65",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.999209
+  },
+  {
+   "cell1": "25_66",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.989392
+  },
+  {
+   "cell1": "25_66",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.999452
+  },
+  {
+   "cell1": "25_66",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.992068
+  },
+  {
+   "cell1": "25_66",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.999432
+  },
+  {
+   "cell1": "25_66",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.997586
+  },
+  {
+   "cell1": "25_67",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.997157
+  },
+  {
+   "cell1": "25_67",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.997992
+  },
+  {
+   "cell1": "25_69",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.999694
+  },
+  {
+   "cell1": "25_70",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.999934
+  },
+  {
+   "cell1": "26_61",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.996752
+  },
+  {
+   "cell1": "26_61",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.999099
+  },
+  {
+   "cell1": "26_61",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.997464
+  },
+  {
+   "cell1": "26_61",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.999072
+  },
+  {
+   "cell1": "26_61",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.999895
+  },
+  {
+   "cell1": "26_61",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.999858
+  },
+  {
+   "cell1": "26_61",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.99993
+  },
+  {
+   "cell1": "26_61",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.999511
+  },
+  {
+   "cell1": "26_62",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.972642
+  },
+  {
+   "cell1": "26_62",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.999856
+  },
+  {
+   "cell1": "26_62",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.999934
+  },
+  {
+   "cell1": "26_62",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.999889
+  },
+  {
+   "cell1": "26_63",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.996033
+  },
+  {
+   "cell1": "26_63",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.993899
+  },
+  {
+   "cell1": "26_63",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.998368
+  },
+  {
+   "cell1": "26_63",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.999159
+  },
+  {
+   "cell1": "26_64",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.999577
+  },
+  {
+   "cell1": "26_64",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.999497
+  },
+  {
+   "cell1": "26_66",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.983541
+  },
+  {
+   "cell1": "26_66",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.999401
+  },
+  {
+   "cell1": "26_66",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.997538
+  },
+  {
+   "cell1": "26_66",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.999926
+  },
+  {
+   "cell1": "26_70",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.998058
+  },
+  {
+   "cell1": "27_62",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.99947
+  },
+  {
+   "cell1": "27_62",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.999932
+  },
+  {
+   "cell1": "27_63",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.996322
+  },
+  {
+   "cell1": "27_63",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.999704
+  },
+  {
+   "cell1": "27_64",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.980402
+  },
+  {
+   "cell1": "27_64",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.999452
+  },
+  {
+   "cell1": "27_65",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.995723
+  },
+  {
+   "cell1": "27_65",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.999828
+  },
+  {
+   "cell1": "27_65",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.998546
+  },
+  {
+   "cell1": "27_65",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.999892
+  },
+  {
+   "cell1": "27_66",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.998951
+  },
+  {
+   "cell1": "27_66",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.996117
+  },
+  {
+   "cell1": "27_66",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.996028
+  },
+  {
+   "cell1": "28_61",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.998306
+  },
+  {
+   "cell1": "28_61",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.998794
+  },
+  {
+   "cell1": "28_61",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.999929
+  },
+  {
+   "cell1": "28_62",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.999041
+  },
+  {
+   "cell1": "28_62",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.999944
+  },
+  {
+   "cell1": "28_63",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.999858
+  },
+  {
+   "cell1": "28_64",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.999856
+  },
+  {
+   "cell1": "28_65",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.996916
+  },
+  {
+   "cell1": "28_65",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.999502
+  },
+  {
+   "cell1": "28_65",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.999973
+  },
+  {
+   "cell1": "28_65",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.999858
+  },
+  {
+   "cell1": "28_66",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.981401
+  },
+  {
+   "cell1": "28_66",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.999774
+  },
+  {
+   "cell1": "28_66",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.999372
+  },
+  {
+   "cell1": "28_66",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.997606
+  },
+  {
+   "cell1": "28_67",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.999428
+  },
+  {
+   "cell1": "28_68",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.989647
+  },
+  {
+   "cell1": "28_68",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.994309
+  },
+  {
+   "cell1": "28_71",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.999727
+  },
+  {
+   "cell1": "29_61",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.999899
+  },
+  {
+   "cell1": "29_62",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.999905
+  },
+  {
+   "cell1": "29_62",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.999944
+  },
+  {
+   "cell1": "29_62",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.999962
+  },
+  {
+   "cell1": "29_64",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.999502
+  },
+  {
+   "cell1": "29_64",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.999686
+  },
+  {
+   "cell1": "29_66",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.996973
+  },
+  {
+   "cell1": "29_66",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.998015
+  },
+  {
+   "cell1": "29_66",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.997603
+  },
+  {
+   "cell1": "29_66",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.997626
+  },
+  {
+   "cell1": "29_66",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.998922
+  },
+  {
+   "cell1": "29_66",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.999813
+  },
+  {
+   "cell1": "29_67",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.999886
+  },
+  {
+   "cell1": "29_67",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.995384
+  },
+  {
+   "cell1": "29_67",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.995767
+  },
+  {
+   "cell1": "29_68",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.998232
+  },
+  {
+   "cell1": "29_70",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.994901
+  },
+  {
+   "cell1": "29_71",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.995862
+  },
+  {
+   "cell1": "29_72",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.999552
+  },
+  {
+   "cell1": "29_72",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.999831
+  },
+  {
+   "cell1": "29_73",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.999805
+  },
+  {
+   "cell1": "29_73",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.999966
+  },
+  {
+   "cell1": "30_66",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.98179
+  },
+  {
+   "cell1": "30_66",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.997465
+  },
+  {
+   "cell1": "30_66",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.999497
+  },
+  {
+   "cell1": "30_66",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.996642
+  },
+  {
+   "cell1": "30_66",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.999515
+  },
+  {
+   "cell1": "30_66",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.99963
+  },
+  {
+   "cell1": "30_67",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.997419
+  },
+  {
+   "cell1": "30_67",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.99641
+  },
+  {
+   "cell1": "30_68",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.996633
+  },
+  {
+   "cell1": "30_69",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.995283
+  },
+  {
+   "cell1": "30_71",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.997072
+  },
+  {
+   "cell1": "30_72",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.993251
+  },
+  {
+   "cell1": "30_72",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.99457
+  },
+  {
+   "cell1": "30_73",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.999498
+  },
+  {
+   "cell1": "30_73",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.999422
+  },
+  {
+   "cell1": "30_74",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.999803
+  },
+  {
+   "cell1": "30_74",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.999966
+  },
+  {
+   "cell1": "31_67",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.99931
+  },
+  {
+   "cell1": "31_68",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.999899
+  },
+  {
+   "cell1": "31_68",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.999573
+  },
+  {
+   "cell1": "31_69",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.993945
+  },
+  {
+   "cell1": "31_69",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.997484
+  },
+  {
+   "cell1": "31_71",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.999895
+  },
+  {
+   "cell1": "31_71",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.996604
+  },
+  {
+   "cell1": "31_71",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.999432
+  },
+  {
+   "cell1": "31_72",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.983468
+  },
+  {
+   "cell1": "31_72",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.993385
+  },
+  {
+   "cell1": "31_73",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.982068
+  },
+  {
+   "cell1": "31_74",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.993008
+  },
+  {
+   "cell1": "32_69",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.996805
+  },
+  {
+   "cell1": "32_73",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.985553
+  },
+  {
+   "cell1": "32_73",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.995586
+  },
+  {
+   "cell1": "32_75",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.999929
+  },
+  {
+   "cell1": "33_69",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.981117
+  },
+  {
+   "cell1": "33_69",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.996653
+  },
+  {
+   "cell1": "33_69",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.992513
+  },
+  {
+   "cell1": "33_69",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.998278
+  },
+  {
+   "cell1": "33_74",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.988811
+  },
+  {
+   "cell1": "34_69",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.999805
+  },
+  {
+   "cell1": "34_70",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.995238
+  },
+  {
+   "cell1": "34_70",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.991278
+  },
+  {
+   "cell1": "34_70",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.99974
+  },
+  {
+   "cell1": "34_70",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.998766
+  },
+  {
+   "cell1": "34_74",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.998849
+  },
+  {
+   "cell1": "34_74",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.993313
+  },
+  {
+   "cell1": "34_75",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.997985
+  },
+  {
+   "cell1": "35_71",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.996207
+  },
+  {
+   "cell1": "35_72",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.983544
+  },
+  {
+   "cell1": "35_74",
+   "daynight": "N",
+   "season": "DJF",
+   "value": 0.998876
+  },
+  {
+   "cell1": "35_74",
+   "daynight": "N",
+   "season": "MAM",
+   "value": 0.996657
+  },
+  {
+   "cell1": "35_74",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.980921
+  },
+  {
+   "cell1": "35_75",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.99647
+  },
+  {
+   "cell1": "35_75",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.998865
+  },
+  {
+   "cell1": "35_75",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.999571
+  },
+  {
+   "cell1": "35_76",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.997503
+  },
+  {
+   "cell1": "35_76",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.998865
+  },
+  {
+   "cell1": "36_72",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.996618
+  },
+  {
+   "cell1": "36_72",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.999805
+  },
+  {
+   "cell1": "36_72",
+   "daynight": "N",
+   "season": "SON",
+   "value": 0.999844
+  },
+  {
+   "cell1": "36_73",
+   "daynight": "D",
+   "season": "SON",
+   "value": 0.999452
+  },
+  {
+   "cell1": "36_73",
+   "daynight": "N",
+   "season": "JJA",
+   "value": 0.99993
+  },
+  {
+   "cell1": "36_74",
+   "daynight": "D",
+   "season": "DJF",
+   "value": 0.999041
+  },
+  {
+   "cell1": "36_74",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.995903
+  },
+  {
+   "cell1": "36_74",
+   "daynight": "D",
+   "season": "JJA",
+   "value": 0.998538
+  },
+  {
+   "cell1": "36_75",
+   "daynight": "D",
+   "season": "MAM",
+   "value": 0.998561
+  }
+ ],
+ "R_viirs_to_modis": [
+  {
+   "daynight": "D",
+   "moy": 1,
+   "value": 0.346423
+  },
+  {
+   "daynight": "D",
+   "moy": 2,
+   "value": 0.340104
+  },
+  {
+   "daynight": "D",
+   "moy": 3,
+   "value": 0.326442
+  },
+  {
+   "daynight": "D",
+   "moy": 4,
+   "value": 0.314436
+  },
+  {
+   "daynight": "D",
+   "moy": 5,
+   "value": 0.23832
+  },
+  {
+   "daynight": "D",
+   "moy": 6,
+   "value": 0.13688
+  },
+  {
+   "daynight": "D",
+   "moy": 7,
+   "value": 0.160956
+  },
+  {
+   "daynight": "D",
+   "moy": 8,
+   "value": 0.458596
+  },
+  {
+   "daynight": "D",
+   "moy": 9,
+   "value": 0.163069
+  },
+  {
+   "daynight": "D",
+   "moy": 10,
+   "value": 0.163261
+  },
+  {
+   "daynight": "D",
+   "moy": 11,
+   "value": 0.181034
+  },
+  {
+   "daynight": "D",
+   "moy": 12,
+   "value": 0.242999
+  },
+  {
+   "daynight": "N",
+   "moy": 1,
+   "value": 0.03142
+  },
+  {
+   "daynight": "N",
+   "moy": 2,
+   "value": 0.047326
+  },
+  {
+   "daynight": "N",
+   "moy": 3,
+   "value": 0.127246
+  },
+  {
+   "daynight": "N",
+   "moy": 4,
+   "value": 0.148095
+  },
+  {
+   "daynight": "N",
+   "moy": 5,
+   "value": 0.088388
+  },
+  {
+   "daynight": "N",
+   "moy": 6,
+   "value": 0.083156
+  },
+  {
+   "daynight": "N",
+   "moy": 7,
+   "value": 0.110985
+  },
+  {
+   "daynight": "N",
+   "moy": 8,
+   "value": 0.103741
+  },
+  {
+   "daynight": "N",
+   "moy": 9,
+   "value": 0.037987
+  },
+  {
+   "daynight": "N",
+   "moy": 10,
+   "value": 0.034263
+  },
+  {
+   "daynight": "N",
+   "moy": 11,
+   "value": 0.031997
+  },
+  {
+   "daynight": "N",
+   "moy": 12,
+   "value": 0.032765
+  }
+ ],
+ "frp_scale": {
+  "N21": 1.210033
+ },
+ "frp_scale_note": "NOAA-21 FRP is divided by this before FRP binning (NOAA-20-equivalent). NOAA JPSS NOAA-21 AF readme (2023-06-01): 'minor (up to ~10%) positive bias' from the M13 SRF shift (NOAA operational product). Our FIRMS data shows a larger, uniform offset; cause of the size difference not verified. Geometric mean of q10..q90 ratios, day+night, SP shared days.",
+ "frp_scale_diagnostics": {
+  "D": {
+   "n_N21": 142310,
+   "n_N20": 146916,
+   "quantile_ratios": {
+    "q10": 1.1981,
+    "q20": 1.2068,
+    "q30": 1.2075,
+    "q40": 1.2183,
+    "q50": 1.2161,
+    "q60": 1.2188,
+    "q70": 1.2188,
+    "q80": 1.2155,
+    "q90": 1.2122
+   }
+  },
+  "N": {
+   "n_N21": 26019,
+   "n_N20": 26296,
+   "quantile_ratios": {
+    "q10": 1.2241,
+    "q20": 1.2152,
+    "q30": 1.2222,
+    "q40": 1.2231,
+    "q50": 1.2177,
+    "q60": 1.2056,
+    "q70": 1.1903,
+    "q80": 1.1871,
+    "q90": 1.1843
+   }
+  }
+ },
+ "f_sat": {
+  "N": 1.0,
+  "N20": 0.976495,
+  "N21": 1.005178
+ },
+ "f_sat_diagnostics": {
+  "N20": {
+   "factor_weighted_all_overlap": 0.9765,
+   "count_ratio_all_overlap": 0.978,
+   "factor_weighted_2018-04_to_2022-09": 0.9741,
+   "count_ratio_2018-04_to_2022-09": 0.9751,
+   "overlap": "SP days where S-NPP and NOAA-20 are both active, 2018-04-01..2026-07-31"
+  },
+  "N21": {
+   "factor_weighted": 1.0052,
+   "n21_over_n20_count_ratio": 0.9718,
+   "n21_over_n20_weighted_ratio": 0.9715,
+   "overlap": "SP days where NOAA-20 and NOAA-21 are both active, 2023-03-01..2026-07-31"
+  }
+ },
+ "terra_scaling": {
+  "factor_by_moy": {
+   "1": 2.0904,
+   "2": 1.9044,
+   "3": 1.6878,
+   "4": 1.5938,
+   "5": 1.6706,
+   "6": 1.7842,
+   "7": 1.9507,
+   "8": 2.2814,
+   "9": 2.6235,
+   "10": 4.3657,
+   "11": 6.7065,
+   "12": 2.5389
+  },
+  "fit_years": [
+   2003,
+   2021
+  ],
+  "applies_before": "2002-07-06",
+  "loyo_log1p_residual_quantiles_country_month": {
+   "q10": -0.1967,
+   "q90": 0.1736,
+   "q05": -0.3067,
+   "q95": 0.252
+  }
+ },
+ "series": [
+  {
+   "from": "2000-11-01",
+   "to": "2002-07-05",
+   "source": "MODIS Terra x (Terra+Aqua)/Terra[moy]",
+   "role": "terra_scaled"
+  },
+  {
+   "from": "2002-07-06",
+   "to": "2022-09-30",
+   "source": "MODIS observed (Terra+Aqua)",
+   "role": "native"
+  },
+  {
+   "from": "2022-10-01",
+   "to": null,
+   "source": "VIIRS-derived MODIS-equivalent (mean of active sats); NRT rows provisional",
+   "role": "derived"
+  }
+ ],
+ "validation": {
+  "loyo_snpp": {
+   "country_month": {
+    "bias_pct": 0.01,
+    "MdAPE": 9.96,
+    "RMSLE": 0.2335,
+    "R2": 0.9558,
+    "n": 129,
+    "n_ge20": 129
+   },
+   "cell1_month": {
+    "bias_pct": 0.01,
+    "MdAPE": 17.65,
+    "RMSLE": 0.56,
+    "R2": 0.9411,
+    "n": 7255,
+    "n_ge20": 1351
+   },
+   "yearly_bias_pct": {
+    "2012": -13.07,
+    "2013": -2.6,
+    "2014": 4.83,
+    "2015": 5.79,
+    "2016": 7.94,
+    "2017": -1.41,
+    "2018": -6.03,
+    "2019": 4.26,
+    "2020": -0.15,
+    "2021": 2.07,
+    "2022": 2.45
+   },
+   "residual_quantiles": {
+    "country_month": {
+     "q05": -0.3639,
+     "q10": -0.2398,
+     "q50": -0.0177,
+     "q90": 0.2053,
+     "q95": 0.3232,
+     "nested_80pct_coverage": 0.791,
+     "definition": "log1p(MODIS observed) - log1p(predicted), pooled over all held-out months"
+    },
+    "cell1_month": {
+     "q05": -0.9969,
+     "q10": -0.7372,
+     "q50": -0.1082,
+     "q90": 0.5991,
+     "q95": 0.7646,
+     "nested_80pct_coverage": 0.799,
+     "definition": "log1p(MODIS observed) - log1p(predicted), pooled over all held-out months"
+    }
+   },
+   "anomaly_skill_country_month": {
+    "raw_log1p_R2": 0.9586,
+    "anomaly_R2": 0.7185,
+    "anomaly_corr": 0.8477,
+    "pctl_err_mean_pp": 10.57,
+    "pctl_err_p90_pp": 27.27,
+    "above_below_median_agreement_pct": 84.5,
+    "same_worst_year_months": "6/12"
+   }
+  },
+  "loyo_merged": {
+   "country_month": {
+    "bias_pct": 0.04,
+    "MdAPE": 9.5,
+    "RMSLE": 0.2283,
+    "R2": 0.9566,
+    "n": 129,
+    "n_ge20": 129
+   },
+   "cell1_month": {
+    "bias_pct": 0.04,
+    "MdAPE": 17.1,
+    "RMSLE": 0.5397,
+    "R2": 0.9434,
+    "n": 7520,
+    "n_ge20": 1351
+   },
+   "yearly_bias_pct": {
+    "2012": -13.07,
+    "2013": -2.6,
+    "2014": 4.83,
+    "2015": 5.79,
+    "2016": 7.94,
+    "2017": -1.41,
+    "2018": -6.16,
+    "2019": 4.65,
+    "2020": -0.31,
+    "2021": 2.84,
+    "2022": 1.65
+   },
+   "residual_quantiles": {
+    "country_month": {
+     "q05": -0.3383,
+     "q10": -0.2421,
+     "q50": -0.0088,
+     "q90": 0.1895,
+     "q95": 0.3192,
+     "nested_80pct_coverage": 0.798,
+     "definition": "log1p(MODIS observed) - log1p(predicted), pooled over all held-out months"
+    },
+    "cell1_month": {
+     "q05": -0.9593,
+     "q10": -0.7172,
+     "q50": -0.0986,
+     "q90": 0.5485,
+     "q95": 0.7242,
+     "nested_80pct_coverage": 0.8,
+     "definition": "log1p(MODIS observed) - log1p(predicted), pooled over all held-out months"
+    }
+   },
+   "anomaly_skill_country_month": {
+    "raw_log1p_R2": 0.9604,
+    "anomaly_R2": 0.7309,
+    "anomaly_corr": 0.855,
+    "pctl_err_mean_pp": 10.43,
+    "pctl_err_p90_pp": 23.64,
+    "above_below_median_agreement_pct": 84.5,
+    "same_worst_year_months": "6/12"
+   },
+   "band_by_count": {
+    "definition": "log1p(MODIS observed) - log1p(predicted), LOYO held-out months pooled over country, 1/0.5/0.25 deg cell-months; bucket = predicted AOI-month count. Band for a predicted total h: [expm1(log1p(h)+q10), expm1(log1p(h)+q90)] (80%).",
+    "buckets": {
+     "<2": {
+      "q05": -0.7833,
+      "q10": -0.6007,
+      "q50": -0.1227,
+      "q90": 0.6931,
+      "q95": 0.8222,
+      "n": 49318,
+      "n_by_level": {
+       "cell0.25": 33677,
+       "cell0.5": 11859,
+       "cell1": 3782
+      },
+      "nested_80pct_coverage": 0.83
+     },
+     "2-5": {
+      "q05": -1.4013,
+      "q10": -1.2308,
+      "q50": -0.185,
+      "q90": 0.52,
+      "q95": 0.6924,
+      "n": 9852,
+      "n_by_level": {
+       "cell0.25": 6279,
+       "cell0.5": 2558,
+       "cell1": 1015
+      },
+      "nested_80pct_coverage": 0.801
+     },
+     "5-20": {
+      "q05": -1.174,
+      "q10": -0.858,
+      "q50": -0.0963,
+      "q90": 0.4513,
+      "q95": 0.5912,
+      "n": 9466,
+      "n_by_level": {
+       "cell0.25": 4827,
+       "cell0.5": 3295,
+       "cell1": 1344
+      },
+      "nested_80pct_coverage": 0.8
+     },
+     "20-100": {
+      "q05": -0.5971,
+      "q10": -0.442,
+      "q50": -0.027,
+      "q90": 0.3559,
+      "q95": 0.449,
+      "n": 3273,
+      "n_by_level": {
+       "cell0.5": 1297,
+       "cell1": 1133,
+       "cell0.25": 824,
+       "country": 19
+      },
+      "nested_80pct_coverage": 0.796
+     },
+     "100-1000": {
+      "q05": -0.3472,
+      "q10": -0.2513,
+      "q50": 0.0042,
+      "q90": 0.2429,
+      "q95": 0.3264,
+      "n": 392,
+      "n_by_level": {
+       "cell1": 246,
+       "cell0.5": 84,
+       "country": 60,
+       "cell0.25": 2
+      },
+      "nested_80pct_coverage": 0.786
+     },
+     ">=1000": {
+      "q05": -0.2687,
+      "q10": -0.1873,
+      "q50": -0.0033,
+      "q90": 0.1627,
+      "q95": 0.2133,
+      "n": 50,
+      "n_by_level": {
+       "country": 50
+      },
+      "nested_80pct_coverage": 0.76
+     }
+    }
+   }
+  },
+  "noise_floor_terra_vs_aqua_anomaly_corr": 0.8748,
+  "forward_2012-2017_to_2018-2022": {
+   "country_month": {
+    "bias_pct": 0.57,
+    "MdAPE": 10.46,
+    "RMSLE": 0.2384,
+    "R2": 0.9636,
+    "n": 57,
+    "n_ge20": 57
+   },
+   "cell1_month": {
+    "bias_pct": 0.57,
+    "MdAPE": 17.65,
+    "RMSLE": 0.5842,
+    "R2": 0.9433,
+    "n": 3197,
+    "n_ge20": 607
+   }
+  },
+  "n20_transfer_no_factor": {
+   "country_month": {
+    "bias_pct": 3.94,
+    "MdAPE": 8.57,
+    "RMSLE": 0.232,
+    "R2": 0.9645,
+    "n": 54,
+    "n_ge20": 54
+   },
+   "cell1_month": {
+    "bias_pct": 3.94,
+    "MdAPE": 16.67,
+    "RMSLE": 0.5861,
+    "R2": 0.9473,
+    "n": 3023,
+    "n_ge20": 533
+   }
+  },
+  "n20_transfer_with_f_sat": {
+   "country_month": {
+    "bias_pct": 1.5,
+    "MdAPE": 8.74,
+    "RMSLE": 0.226,
+    "R2": 0.9658,
+    "n": 54,
+    "n_ge20": 54
+   },
+   "cell1_month": {
+    "bias_pct": 1.5,
+    "MdAPE": 16.47,
+    "RMSLE": 0.5814,
+    "R2": 0.9464,
+    "n": 3023,
+    "n_ge20": 533
+   }
+  },
+  "expected_from_research": {
+   "loyo_country_month": {
+    "MdAPE": 10.7,
+    "R2": 0.956
+   },
+   "loyo_cell1_month": {
+    "MdAPE": 17.7,
+    "R2": 0.941
+   },
+   "forward": {
+    "country_MdAPE": 11.0,
+    "cell_MdAPE": 18.1,
+    "cell_R2": 0.943
+   },
+   "n20_transfer": {
+    "bias_pct": 4.6,
+    "country_MdAPE": 8.5,
+    "cell_R2": 0.947
+   },
+   "source": "docs/harmonization-research.md \u00a76 (filters: type==0, not the location mask)"
+  }
+ },
+ "inputs": {
+  "raw_files": [
+   "raw_data/modis/modis_2000_Pakistan.csv",
+   "raw_data/modis/modis_2001_Pakistan.csv",
+   "raw_data/modis/modis_2002_Pakistan.csv",
+   "raw_data/modis/modis_2003_Pakistan.csv",
+   "raw_data/modis/modis_2004_Pakistan.csv",
+   "raw_data/modis/modis_2005_Pakistan.csv",
+   "raw_data/modis/modis_2006_Pakistan.csv",
+   "raw_data/modis/modis_2007_Pakistan.csv",
+   "raw_data/modis/modis_2008_Pakistan.csv",
+   "raw_data/modis/modis_2009_Pakistan.csv",
+   "raw_data/modis/modis_2010_Pakistan.csv",
+   "raw_data/modis/modis_2011_Pakistan.csv",
+   "raw_data/modis/modis_2012_Pakistan.csv",
+   "raw_data/modis/modis_2013_Pakistan.csv",
+   "raw_data/modis/modis_2014_Pakistan.csv",
+   "raw_data/modis/modis_2015_Pakistan.csv",
+   "raw_data/modis/modis_2016_Pakistan.csv",
+   "raw_data/modis/modis_2017_Pakistan.csv",
+   "raw_data/modis/modis_2018_Pakistan.csv",
+   "raw_data/modis/modis_2019_Pakistan.csv",
+   "raw_data/modis/modis_2020_Pakistan.csv",
+   "raw_data/modis/modis_2021_Pakistan.csv",
+   "raw_data/modis/modis_2022_Pakistan.csv",
+   "raw_data/modis/modis_2023_Pakistan.csv",
+   "raw_data/modis/modis_2024_Pakistan.csv",
+   "raw_data/modis/modis_2025_Pakistan.csv",
+   "raw_data/modis/modis_2026_Pakistan_NRT.csv",
+   "raw_data/modis/modis_2026_Pakistan_SP.csv",
+   "raw_data/viirs-jpss1/viirs-jpss1_2018_Pakistan.csv",
+   "raw_data/viirs-jpss1/viirs-jpss1_2019_Pakistan.csv",
+   "raw_data/viirs-jpss1/viirs-jpss1_2020_Pakistan.csv",
+   "raw_data/viirs-jpss1/viirs-jpss1_2021_Pakistan.csv",
+   "raw_data/viirs-jpss1/viirs-jpss1_2022_Pakistan.csv",
+   "raw_data/viirs-jpss1/viirs-jpss1_2023_Pakistan.csv",
+   "raw_data/viirs-jpss1/viirs-jpss1_2024_Pakistan.csv",
+   "raw_data/viirs-jpss1/viirs-jpss1_2025_Pakistan.csv",
+   "raw_data/viirs-jpss1/viirs-jpss1_2026_Pakistan_NRT.csv",
+   "raw_data/viirs-jpss1/viirs-jpss1_2026_Pakistan_SP.csv",
+   "raw_data/viirs-jpss2/viirs-jpss2_2023-2026_Pakistan_SP.csv",
+   "raw_data/viirs-jpss2/viirs-jpss2_2026_Pakistan_NRT.csv",
+   "raw_data/viirs-snpp/viirs-snpp_2012_Pakistan.csv",
+   "raw_data/viirs-snpp/viirs-snpp_2013_Pakistan.csv",
+   "raw_data/viirs-snpp/viirs-snpp_2014_Pakistan.csv",
+   "raw_data/viirs-snpp/viirs-snpp_2015_Pakistan.csv",
+   "raw_data/viirs-snpp/viirs-snpp_2016_Pakistan.csv",
+   "raw_data/viirs-snpp/viirs-snpp_2017_Pakistan.csv",
+   "raw_data/viirs-snpp/viirs-snpp_2018_Pakistan.csv",
+   "raw_data/viirs-snpp/viirs-snpp_2019_Pakistan.csv",
+   "raw_data/viirs-snpp/viirs-snpp_2020_Pakistan.csv",
+   "raw_data/viirs-snpp/viirs-snpp_2021_Pakistan.csv",
+   "raw_data/viirs-snpp/viirs-snpp_2022_Pakistan.csv",
+   "raw_data/viirs-snpp/viirs-snpp_2023_Pakistan.csv",
+   "raw_data/viirs-snpp/viirs-snpp_2024_Pakistan.csv",
+   "raw_data/viirs-snpp/viirs-snpp_2025_Pakistan.csv",
+   "raw_data/viirs-snpp/viirs-snpp_2026_Pakistan_NRT.csv",
+   "raw_data/viirs-snpp/viirs-snpp_2026_Pakistan_SP.csv"
+  ],
+  "n_rows": 1886811,
+  "max_date": "2026-11-13"
+ }
+}

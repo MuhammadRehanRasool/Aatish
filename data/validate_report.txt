@@ -1,0 +1,171 @@
+rows 1886811 | roles {'excluded': 1049301, 'derived': 648563, 'native': 182874, 'terra_scaled': 6073}
+
+=== 1. integrity + weight reproduction ===
+  [PASS] no NaN weights 
+  [PASS] conf-failing rows have w=0 
+  [PASS] VIIRS rows have n_active>=1 
+  [PASS] no VIIRS detections on a flagged no-data sat-day 
+  [PASS] VIIRS w_modis_eq reproduced from parquet-only refit (max abs diff 4.34e-07)
+  [PASS] P_aqua curve matches calibration.json (max diff 4.7e-07)
+
+=== 2. LOYO / forward / transfer (from parquet) vs calibration.json and research ===
+  [PASS] loyo_snpp.country_month == calibration.json MdAPE 9.96 R2 0.9558 bias 0.01%
+  [PASS] loyo_snpp.cell1_month == calibration.json MdAPE 17.65 R2 0.9411 bias 0.01%
+  [PASS] loyo_merged.country_month == calibration.json MdAPE 9.5 R2 0.9566 bias 0.04%
+  [PASS] loyo_merged.cell1_month == calibration.json MdAPE 17.1 R2 0.9434 bias 0.04%
+  [PASS] LOYO country MdAPE ~10.7 (±1.5pp) 9.96
+  [PASS] LOYO country R2 ~0.956 (±0.01) 0.9558
+  [PASS] LOYO cell MdAPE ~17.7 (±1.5pp) 17.65
+  [PASS] LOYO cell R2 ~0.941 (±0.01) 0.9411
+  [PASS] forward country MdAPE ~11.0 (±2pp) 10.46
+  [PASS] forward cell MdAPE ~18.1 (±2pp) 17.65
+  [PASS] NOAA-20 transfer bias ~+4.6% (±3pp) 3.94
+  [PASS] NOAA-20 transfer country MdAPE ~8.5 (±2pp) 8.57
+  NOAA-20 transfer with f_sat: {'bias_pct': 1.5, 'MdAPE': 8.74, 'RMSLE': 0.226, 'R2': 0.9658, 'n': 54, 'n_ge20': 54}
+  yearly LOYO bias % (merged): {2012: -13.07, 2013: -2.6, 2014: 4.83, 2015: 5.79, 2016: 7.94, 2017: -1.41, 2018: -6.16, 2019: 4.65, 2020: -0.31, 2021: 2.84, 2022: 1.65}
+  [PASS] yearly bias within ±8% for 2013-2022 
+  80% band country_month: [-0.242, +0.190] log1p, nested coverage 0.798
+  [PASS] 80% band coverage country_month in 0.72..0.88 
+  80% band cell1_month: [-0.717, +0.548] log1p, nested coverage 0.8
+  [PASS] 80% band coverage cell1_month in 0.72..0.88 
+  count-dependent 80% bands (log1p residual, nested LOYO coverage):
+           <2: [-0.601, +0.693]  n=49318  coverage 0.83
+  [PASS] band_by_count <2 coverage in 0.72..0.88 
+          2-5: [-1.231, +0.520]  n= 9852  coverage 0.801
+  [PASS] band_by_count 2-5 coverage in 0.72..0.88 
+         5-20: [-0.858, +0.451]  n= 9466  coverage 0.8
+  [PASS] band_by_count 5-20 coverage in 0.72..0.88 
+       20-100: [-0.442, +0.356]  n= 3273  coverage 0.796
+  [PASS] band_by_count 20-100 coverage in 0.72..0.88 
+     100-1000: [-0.251, +0.243]  n=  392  coverage 0.786
+  [PASS] band_by_count 100-1000 coverage in 0.72..0.88 
+       >=1000: [-0.187, +0.163]  n=   50  coverage 0.76
+  [PASS] band_by_count == calibration.json 
+  anomaly skill (merged, country-month): {'raw_log1p_R2': 0.9604, 'anomaly_R2': 0.7309, 'anomaly_corr': 0.855, 'pctl_err_mean_pp': 10.43, 'pctl_err_p90_pp': 23.64, 'above_below_median_agreement_pct': 84.5, 'same_worst_year_months': '6/12'}
+  noise floor, Terra vs Aqua anomaly corr: 0.8748
+  [PASS] anomaly skill == calibration.json 
+  [PASS] anomaly corr within 0.05 of the Terra-vs-Aqua floor 0.855 vs 0.8748
+
+=== 3. matching-radius sensitivity (LOYO, fit set identical) ===
+  P_aqua at 1.0 km (rows FRP bin <1..>=32):
+fbin         <1    1-2    2-4    4-8   8-16  16-32   >=32
+daynight                                                 
+D         0.011  0.019  0.036  0.070  0.109  0.174  0.256
+N         0.008  0.033  0.099  0.205  0.328  0.479  0.345
+  P_aqua at 1.5 km (rows FRP bin <1..>=32):
+fbin         <1    1-2    2-4    4-8   8-16  16-32   >=32
+daynight                                                 
+D         0.011  0.024  0.044  0.083  0.130  0.205  0.320
+N         0.012  0.041  0.120  0.246  0.387  0.539  0.483
+  P_aqua at 2.0 km (rows FRP bin <1..>=32):
+fbin         <1    1-2    2-4    4-8   8-16  16-32   >=32
+daynight                                                 
+D         0.015  0.029  0.051  0.091  0.140  0.216  0.346
+N         0.013  0.046  0.128  0.260  0.405  0.545  0.603
+ radius_km  input  cty_MdAPE  cty_RMSLE  cty_R2  cell_MdAPE  cell_RMSLE  cell_R2
+       1.0   snpp       9.91     0.2334  0.9559       17.74      0.5599   0.9413
+       1.0 merged       9.40     0.2282  0.9567       16.94      0.5396   0.9436
+       1.5   snpp       9.96     0.2335  0.9558       17.65      0.5600   0.9411
+       1.5 merged       9.50     0.2283  0.9566       17.10      0.5397   0.9434
+       2.0   snpp      10.03     0.2344  0.9551       17.69      0.5598   0.9405
+       2.0 merged       9.80     0.2293  0.9558       17.17      0.5397   0.9428
+  spread (max-min) across radii:
+        cty_MdAPE  cell_MdAPE
+input                        
+merged       0.40        0.23
+snpp         0.12        0.09
+
+=== 4. sanity: series seams, overlap, satellites, drift ===
+Main series, months around 2002-07 seam:
+series_role  derived  native  terra_scaled   total
+ym                                                
+2002-01          0.0     0.0         780.0   780.0
+2002-02          0.0     0.0         973.0   973.0
+2002-03          0.0     0.0         368.0   368.0
+2002-04          0.0     0.0         539.0   539.0
+2002-05          0.0     0.0        1861.0  1861.0
+2002-06          0.0     0.0         193.0   193.0
+2002-07          0.0    43.0           2.0    45.0
+2002-08          0.0    52.0           0.0    52.0
+2002-09          0.0    51.0           0.0    51.0
+2002-10          0.0   154.0           0.0   154.0
+2002-11          0.0   702.0           0.0   702.0
+2002-12          0.0   555.0           0.0   555.0
+Terra-scaled vs observed Terra+Aqua, first 12 months with Aqua:
+satellite  Aqua  Terra  terra_scaled  obs_T+A  ratio
+ym                                                  
+2002-07      19     24         46.82       43   0.92
+2002-08      26     26         59.32       52   0.88
+2002-09      23     28         73.46       51   0.69
+2002-10      97     57        248.84      154   0.62
+2002-11     599    103        690.77      702   1.02
+2002-12     339    216        548.40      555   1.01
+2003-01     249    250        522.60      499   0.95
+2003-02     477    492        936.96      969   1.03
+2003-03     357    487        821.96      844   1.03
+2003-04     274    354        564.21      628   1.11
+2003-05     658   1253       2093.26     1911   0.91
+2003-06      44     67        119.54      111   0.93
+  pooled ratio obs/scaled 2002-07..2003-06: 0.969
+Main series, months around 2022-10 seam (with MODIS observed for reference, drift-affected):
+         modis_obs  viirs_derived  ratio_derived/obs
+ym                                                  
+2022-04        977        1220.88               1.25
+2022-05       1588        1577.09               0.99
+2022-06        735         645.09               0.88
+2022-07        155         124.69               0.80
+2022-08         86          86.88               1.01
+2022-09         39          71.80               1.84
+2022-10        983         928.05               0.94
+2022-11       1107        1120.90               1.01
+2022-12        892         944.01               1.06
+2023-01       1499        1563.27               1.04
+2023-02       2179        2078.69               0.95
+2023-03        752         634.84               0.84
+
+Overlap 2012-01-20..2022-09-30 (country, non-static; VIIRS-derived = production weights, in-sample):
+      modis_obs  viirs_derived  derived/obs
+year                                       
+2012      11532       9696.063        0.841
+2013       8561       8361.252        0.977
+2014       9789      10211.992        1.043
+2015       8212       8649.155        1.053
+2016      10243      10966.113        1.071
+2017      11609      11462.231        0.987
+2018      12221      11591.494        0.948
+2019       8951       9280.964        1.037
+2020       9258       9192.262        0.993
+2021      12208      12571.326        1.030
+2022       7850       7945.535        1.012
+  in-sample monthly MdAPE 8.5%  corr(log1p) 0.982  total ratio 0.995
+  by month-of-year derived/obs: {1: 0.974, 2: 1.01, 3: 0.989, 4: 1.034, 5: 0.997, 6: 0.975, 7: 0.91, 8: 0.87, 9: 1.019, 10: 0.999, 11: 1.002, 12: 0.99}
+
+NOAA-21 FRP rescale (self-audit S5): scale {'N21': 1.210033} | f_sat {'N': 1.0, 'N20': 0.976495, 'N21': 1.005178}
+  [PASS] FRP scale reproduced from parquet 1.2100
+  [PASS] after rescale, N21/N20 weight ratio within 0.03 of count ratio weighted 0.9715 vs count 0.9718
+  N21/N20 MODIS-eq ratio by month-of-year: {1: 1.013, 2: 1.046, 3: 0.957, 4: 1.0, 5: 0.971, 6: 1.026, 7: 0.892, 8: 0.841, 9: 0.974, 10: 1.016, 11: 0.992, 12: 1.036}
+
+Per-satellite derived totals on days all compared sats active (SP), should be ~1:
+  N20/N monthly MODIS-eq ratio: median 1.003, IQR 0.972-1.040, n=99
+  [PASS] N20/N derived monthly ratio median within 0.95..1.05 
+  N21/N20 monthly MODIS-eq ratio: median 0.992, IQR 0.944-1.037, n=41
+  [PASS] N21/N20 derived monthly ratio median within 0.95..1.05 
+
+Drift check, Oct-Nov: MODIS observed (T+A) / VIIRS-derived, and Terra's share of MODIS detections:
+      modis_obs  viirs_derived  obs/derived  terra_share
+year                                                    
+2016       2093         2174.0        0.963        0.225
+2017       2162         2070.0        1.044        0.136
+2018       2118         2137.0        0.991        0.168
+2019       1594         1724.0        0.925        0.122
+2020       2788         2516.0        1.108        0.159
+2021       4128         3870.0        1.067        0.124
+2022       2090         2049.0        1.020        0.061
+2023       2660         2182.0        1.219        0.073
+2024       2268         2373.0        0.956        0.059
+2025       2499         2494.0        1.002        0.045
+2026       2231         1860.0        1.199        0.027
+  note: 2026 Nov is partial (to 2026-11-13 ) and NRT
+
+=== summary ===
+ALL CHECKS PASSED 

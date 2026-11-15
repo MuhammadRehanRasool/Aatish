@@ -1,0 +1,423 @@
+satellite,date,daynight,status,evidence,affects_series
+Aqua,2020-08-16,D,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-16,N,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-17,D,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-17,N,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-18,D,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-18,N,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-19,D,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-19,N,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-20,D,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-20,N,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-21,D,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-21,N,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-22,D,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-22,N,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-23,D,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-23,N,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-24,D,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-24,N,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-25,D,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-25,N,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-26,D,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-26,N,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-27,D,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-27,N,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-28,D,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-28,N,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-29,D,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-29,N,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-30,D,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-30,N,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-31,D,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-08-31,N,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-09-01,D,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-09-01,N,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-09-02,D,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+Aqua,2020-09-02,N,official: Aqua FMU outage (MODIS C6.1 guide §7.2.4),,False
+MODIS,2025-09-07,D,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2025-09-07..2025-09-13 (7 d); VIIRS rows in run = 248,False
+MODIS,2025-09-07,N,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2025-09-07..2025-09-13 (7 d); VIIRS rows in run = 248,False
+MODIS,2025-09-08,D,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2025-09-07..2025-09-13 (7 d); VIIRS rows in run = 248,False
+MODIS,2025-09-08,N,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2025-09-07..2025-09-13 (7 d); VIIRS rows in run = 248,False
+MODIS,2025-09-09,D,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2025-09-07..2025-09-13 (7 d); VIIRS rows in run = 248,False
+MODIS,2025-09-09,N,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2025-09-07..2025-09-13 (7 d); VIIRS rows in run = 248,False
+MODIS,2025-09-10,D,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2025-09-07..2025-09-13 (7 d); VIIRS rows in run = 248,False
+MODIS,2025-09-10,N,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2025-09-07..2025-09-13 (7 d); VIIRS rows in run = 248,False
+MODIS,2025-09-11,D,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2025-09-07..2025-09-13 (7 d); VIIRS rows in run = 248,False
+MODIS,2025-09-11,N,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2025-09-07..2025-09-13 (7 d); VIIRS rows in run = 248,False
+MODIS,2025-09-12,D,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2025-09-07..2025-09-13 (7 d); VIIRS rows in run = 248,False
+MODIS,2025-09-12,N,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2025-09-07..2025-09-13 (7 d); VIIRS rows in run = 248,False
+MODIS,2025-09-13,D,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2025-09-07..2025-09-13 (7 d); VIIRS rows in run = 248,False
+MODIS,2025-09-13,N,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2025-09-07..2025-09-13 (7 d); VIIRS rows in run = 248,False
+N,2018-07-15,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 4,True
+N,2018-07-16,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N,2018-07-24,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 5,True
+N,2018-07-25,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 4,True
+N,2018-07-26,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 2,True
+N,2018-08-16,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 15,True
+N,2018-08-21,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 4,True
+N,2019-01-21,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 14,True
+N,2019-02-19,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N,2019-07-27,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N,2019-07-27,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N,2019-07-28,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 6,True
+N,2019-08-01,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N,2019-08-02,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N,2019-08-02,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 7,True
+N,2019-08-06,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N,2019-08-07,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 7,True
+N,2019-08-14,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 4,True
+N,2019-10-06,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N,2019-10-31,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 220,True
+N,2019-11-01,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 64,True
+N,2019-11-22,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 7,True
+N,2020-01-12,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 2,True
+N,2020-03-22,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 8,True
+N,2020-03-23,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N,2020-08-19,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N,2020-08-19,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 2,True
+N,2020-08-26,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N,2020-08-27,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N,2020-08-31,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N,2021-03-21,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 8,True
+N,2021-07-26,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N,2021-07-28,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 2,True
+N,2021-08-03,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N,2021-08-04,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 8,True
+N,2022-06-28,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 232,True
+N,2022-07-08,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 6,True
+N,2022-07-09,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N,2022-07-13,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 12,True
+N,2022-07-25,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N,2022-07-26,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 5,True
+N,2022-07-27,D,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 1,True
+N,2022-07-27,N,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 2,True
+N,2022-07-28,D,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 2,True
+N,2022-07-28,N,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 6,True
+N,2022-07-29,D,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 1,True
+N,2022-07-29,N,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 3,True
+N,2022-07-30,D,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 5,True
+N,2022-07-30,N,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 1,True
+N,2022-07-31,D,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),,True
+N,2022-07-31,N,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 4,True
+N,2022-08-01,D,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 2,True
+N,2022-08-01,N,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 5,True
+N,2022-08-02,D,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 1,True
+N,2022-08-02,N,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),,True
+N,2022-08-03,D,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 2,True
+N,2022-08-03,N,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 2,True
+N,2022-08-04,D,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 14,True
+N,2022-08-04,N,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 6,True
+N,2022-08-05,D,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 23,True
+N,2022-08-05,N,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 4,True
+N,2022-08-06,D,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 3,True
+N,2022-08-06,N,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 2,True
+N,2022-08-07,D,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 10,True
+N,2022-08-07,N,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 12,True
+N,2022-08-08,D,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 7,True
+N,2022-08-08,N,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 4,True
+N,2022-08-09,D,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 7,True
+N,2022-08-09,N,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 7,True
+N,2022-08-10,D,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 76,True
+N,2022-08-10,N,official: S-NPP outage (VIIRS C2 BA guide v1.1 §6),max other VIIRS count = 13,True
+N,2022-08-14,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 2,True
+N,2022-08-17,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N,2022-08-20,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 5,True
+N,2023-07-06,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 4,True
+N,2023-07-07,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 5,True
+N,2023-07-26,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 4,True
+N,2023-07-26,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 9,True
+N,2023-07-27,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 9,True
+N,2023-08-14,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 4,True
+N,2023-08-23,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 2,True
+N,2023-08-23,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 4,True
+N,2023-09-19,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 7,True
+N,2023-11-01,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 26,True
+N,2023-11-02,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 317,True
+N,2024-01-31,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 232,True
+N,2024-04-13,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N,2024-05-30,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 319,True
+N,2024-05-30,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 199,True
+N,2024-05-31,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 223,True
+N,2024-05-31,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 258,True
+N,2024-06-01,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 250,True
+N,2024-06-01,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 272,True
+N,2024-06-02,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 370,True
+N,2024-06-02,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 171,True
+N,2024-06-03,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 168,True
+N,2024-06-03,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 209,True
+N,2024-07-10,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 118,True
+N,2024-07-10,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 9,True
+N,2024-07-11,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 84,True
+N,2024-07-11,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 17,True
+N,2024-07-12,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 30,True
+N,2024-07-12,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 12,True
+N,2024-07-13,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 8,True
+N,2024-07-13,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 6,True
+N,2024-07-14,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 37,True
+N,2024-07-14,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 20,True
+N,2024-07-15,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 101,True
+N,2024-07-15,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 13,True
+N,2024-07-16,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 138,True
+N,2024-07-24,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 40,True
+N,2024-07-24,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 19,True
+N,2024-07-25,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 19,True
+N,2024-07-25,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 9,True
+N,2024-07-26,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 33,True
+N,2024-07-26,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 10,True
+N,2024-07-27,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 47,True
+N,2024-07-27,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 4,True
+N,2024-07-28,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 28,True
+N,2024-07-28,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N,2024-07-29,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 176,True
+N,2024-08-01,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N,2024-08-16,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N,2024-08-27,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 2,True
+N,2024-08-29,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N,2024-09-26,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 144,True
+N,2024-09-26,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 16,True
+N,2024-09-27,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 48,True
+N,2024-11-03,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 833,True
+N,2024-11-03,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 30,True
+N,2024-11-04,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 589,True
+N,2024-11-04,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 34,True
+N,2024-11-05,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 466,True
+N,2024-11-05,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 29,True
+N,2024-11-06,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 518,True
+N,2025-07-04,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 18,True
+N,2025-07-05,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 115,True
+N,2025-07-05,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 15,True
+N,2025-07-06,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 2,True
+N,2025-07-07,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 39,True
+N,2025-07-07,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 6,True
+N,2025-07-11,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 60,True
+N,2025-07-11,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N,2025-07-15,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 8,True
+N,2025-07-22,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N,2025-07-23,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N,2025-08-12,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 4,True
+N,2025-08-24,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 5,True
+N,2025-09-01,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N,2025-09-03,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 4,True
+N,2025-09-07,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 5,True
+N,2025-09-08,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 2,True
+N,2025-09-09,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N,2025-10-06,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 5,True
+N,2025-11-11,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 41,True
+N,2025-11-12,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 349,True
+N,2026-03-09,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 18,True
+N,2026-03-10,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 79,True
+N,2026-03-10,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 17,True
+N,2026-03-11,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 62,True
+N,2026-03-11,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 8,True
+N,2026-03-12,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 102,True
+N,2026-03-12,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 26,True
+N,2026-03-13,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 97,True
+N,2026-03-18,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N,2026-04-02,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 4,True
+N,2026-04-28,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 205,True
+N,2026-04-28,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 15,True
+N,2026-04-29,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 200,True
+N,2026-04-29,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 45,True
+N,2026-04-30,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 375,True
+N,2026-04-30,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 27,True
+N,2026-06-01,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 104,True
+N,2026-06-01,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 20,True
+N,2026-06-02,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 189,True
+N,2026-06-02,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 9,True
+N,2026-07-10,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 6,True
+N,2026-07-11,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 84,True
+N,2026-07-11,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 10,True
+N,2026-07-12,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 16,True
+N,2026-07-12,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 4,True
+N,2026-07-13,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 45,True
+N,2026-07-13,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 10,True
+N,2026-07-14,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 24,True
+N,2026-07-14,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 9,True
+N,2026-07-15,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 33,True
+N,2026-07-15,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 14,True
+N,2026-07-16,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 86,True
+N,2026-07-16,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 29,True
+N,2026-07-21,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N,2026-07-31,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N,2026-08-03,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 8,True
+N,2026-08-03,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 5,True
+N,2026-08-04,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 9,True
+N,2026-10-13,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 102,True
+N,2026-11-02,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 44,True
+N20,2018-07-04,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 7,True
+N20,2018-07-19,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 15,True
+N20,2018-07-26,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N20,2018-07-27,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 5,True
+N20,2018-08-07,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N20,2018-08-18,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 77,True
+N20,2019-07-15,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N20,2019-08-10,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 6,True
+N20,2019-08-16,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N20,2019-09-02,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 8,True
+N20,2020-01-06,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N20,2020-09-01,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N20,2021-02-14,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 59,True
+N20,2021-07-19,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N20,2021-07-21,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N20,2021-08-30,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N20,2022-07-06,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N20,2022-07-11,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 6,True
+N20,2022-07-21,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 2,True
+N20,2022-08-18,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 2,True
+N20,2022-08-24,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 2,True
+N20,2022-08-28,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 4,True
+N20,2022-08-30,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 9,True
+N20,2023-05-28,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 4,True
+N20,2023-07-04,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 4,True
+N20,2023-07-08,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N20,2023-07-19,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 107,True
+N20,2023-07-20,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 44,True
+N20,2023-07-20,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 10,True
+N20,2023-07-21,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 10,True
+N20,2023-07-21,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N20,2023-07-22,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N20,2023-07-22,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N20,2023-08-06,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N20,2023-08-15,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 10,True
+N20,2023-09-29,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 28,True
+N20,2023-09-30,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 84,True
+N20,2023-09-30,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 16,True
+N20,2023-10-01,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 110,True
+N20,2023-11-23,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 94,True
+N20,2023-11-25,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 2,True
+N20,2024-01-29,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 10,True
+N20,2024-02-04,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 180,True
+N20,2024-02-04,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 15,True
+N20,2024-02-05,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 280,True
+N20,2024-03-01,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 5,True
+N20,2024-07-28,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N20,2024-07-31,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 4,True
+N20,2024-08-01,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 2,True
+N20,2024-08-01,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N20,2024-08-27,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 2,True
+N20,2024-08-29,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N20,2025-02-26,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 2,True
+N20,2025-06-26,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 2,True
+N20,2025-08-01,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 2,True
+N20,2025-08-13,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 4,True
+N20,2025-08-14,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N20,2025-08-14,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N20,2025-08-19,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N20,2025-08-25,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N20,2025-08-30,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 5,True
+N20,2025-08-31,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 7,True
+N20,2026-04-02,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N20,2026-07-22,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 4,True
+N21,2023-03-24,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 4,True
+N21,2023-05-01,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 190,True
+N21,2023-07-06,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 4,True
+N21,2023-07-08,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N21,2023-08-02,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 4,True
+N21,2023-08-06,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N21,2023-08-13,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 6,True
+N21,2023-08-23,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 4,True
+N21,2023-11-25,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 2,True
+N21,2024-02-26,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 18,True
+N21,2024-02-27,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 186,True
+N21,2024-02-27,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 35,True
+N21,2024-02-28,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 253,True
+N21,2024-02-28,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 30,True
+N21,2024-02-29,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 2,True
+N21,2024-06-22,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 77,True
+N21,2024-07-18,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N21,2024-08-01,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 2,True
+N21,2024-08-16,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 2,True
+N21,2024-08-18,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N21,2024-08-29,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N21,2025-02-25,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N21,2025-07-09,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 14,True
+N21,2025-08-18,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 5,True
+N21,2025-09-02,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N21,2025-09-07,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N21,2025-09-09,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 3,True
+N21,2025-09-18,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 10,True
+N21,2025-10-01,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 26,True
+N21,2026-03-18,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 1,True
+N21,2026-08-03,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 8,True
+N21,2026-08-28,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 11,True
+N21,2026-09-07,N,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 21,True
+N21,2026-10-13,D,rule: 0 detections while another VIIRS sat has >=1 (same date+daynight),max other VIIRS count = 102,True
+Terra,2001-06-14,D,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-14,N,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-15,D,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-15,N,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-16,D,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-16,N,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-17,D,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-17,N,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-18,D,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-18,N,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-19,D,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-19,N,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-20,D,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-20,N,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-21,D,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-21,N,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-22,D,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-22,N,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-23,D,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-23,N,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-24,D,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-24,N,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-25,D,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-25,N,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-26,D,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-26,N,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-27,D,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-27,N,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-28,D,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-28,N,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-29,D,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-29,N,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-30,D,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-06-30,N,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-07-01,D,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-07-01,N,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-07-02,D,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-07-02,N,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-07-03,D,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-07-03,N,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-07-04,D,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-07-04,N,"DATA_NOTES gotcha 3: 2001 Terra gap, treat as no-data (official cause not verified)",0 MODIS detections 2001-06-14..2001-07-04 (21 d); VIIRS rows in run = 0,True
+Terra,2001-08-19,D,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2001-08-19..2001-08-26 (8 d); VIIRS rows in run = 0,False
+Terra,2001-08-19,N,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2001-08-19..2001-08-26 (8 d); VIIRS rows in run = 0,False
+Terra,2001-08-20,D,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2001-08-19..2001-08-26 (8 d); VIIRS rows in run = 0,False
+Terra,2001-08-20,N,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2001-08-19..2001-08-26 (8 d); VIIRS rows in run = 0,False
+Terra,2001-08-21,D,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2001-08-19..2001-08-26 (8 d); VIIRS rows in run = 0,False
+Terra,2001-08-21,N,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2001-08-19..2001-08-26 (8 d); VIIRS rows in run = 0,False
+Terra,2001-08-22,D,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2001-08-19..2001-08-26 (8 d); VIIRS rows in run = 0,False
+Terra,2001-08-22,N,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2001-08-19..2001-08-26 (8 d); VIIRS rows in run = 0,False
+Terra,2001-08-23,D,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2001-08-19..2001-08-26 (8 d); VIIRS rows in run = 0,False
+Terra,2001-08-23,N,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2001-08-19..2001-08-26 (8 d); VIIRS rows in run = 0,False
+Terra,2001-08-24,D,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2001-08-19..2001-08-26 (8 d); VIIRS rows in run = 0,False
+Terra,2001-08-24,N,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2001-08-19..2001-08-26 (8 d); VIIRS rows in run = 0,False
+Terra,2001-08-25,D,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2001-08-19..2001-08-26 (8 d); VIIRS rows in run = 0,False
+Terra,2001-08-25,N,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2001-08-19..2001-08-26 (8 d); VIIRS rows in run = 0,False
+Terra,2001-08-26,D,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2001-08-19..2001-08-26 (8 d); VIIRS rows in run = 0,False
+Terra,2001-08-26,N,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2001-08-19..2001-08-26 (8 d); VIIRS rows in run = 0,False
+Terra,2002-03-20,D,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2002-03-20..2002-03-29 (10 d); VIIRS rows in run = 0,False
+Terra,2002-03-20,N,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2002-03-20..2002-03-29 (10 d); VIIRS rows in run = 0,False
+Terra,2002-03-21,D,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2002-03-20..2002-03-29 (10 d); VIIRS rows in run = 0,False
+Terra,2002-03-21,N,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2002-03-20..2002-03-29 (10 d); VIIRS rows in run = 0,False
+Terra,2002-03-22,D,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2002-03-20..2002-03-29 (10 d); VIIRS rows in run = 0,False
+Terra,2002-03-22,N,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2002-03-20..2002-03-29 (10 d); VIIRS rows in run = 0,False
+Terra,2002-03-23,D,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2002-03-20..2002-03-29 (10 d); VIIRS rows in run = 0,False
+Terra,2002-03-23,N,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2002-03-20..2002-03-29 (10 d); VIIRS rows in run = 0,False
+Terra,2002-03-24,D,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2002-03-20..2002-03-29 (10 d); VIIRS rows in run = 0,False
+Terra,2002-03-24,N,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2002-03-20..2002-03-29 (10 d); VIIRS rows in run = 0,False
+Terra,2002-03-25,D,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2002-03-20..2002-03-29 (10 d); VIIRS rows in run = 0,False
+Terra,2002-03-25,N,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2002-03-20..2002-03-29 (10 d); VIIRS rows in run = 0,False
+Terra,2002-03-26,D,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2002-03-20..2002-03-29 (10 d); VIIRS rows in run = 0,False
+Terra,2002-03-26,N,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2002-03-20..2002-03-29 (10 d); VIIRS rows in run = 0,False
+Terra,2002-03-27,D,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2002-03-20..2002-03-29 (10 d); VIIRS rows in run = 0,False
+Terra,2002-03-27,N,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2002-03-20..2002-03-29 (10 d); VIIRS rows in run = 0,False
+Terra,2002-03-28,D,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2002-03-20..2002-03-29 (10 d); VIIRS rows in run = 0,False
+Terra,2002-03-28,N,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2002-03-20..2002-03-29 (10 d); VIIRS rows in run = 0,False
+Terra,2002-03-29,D,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2002-03-20..2002-03-29 (10 d); VIIRS rows in run = 0,False
+Terra,2002-03-29,N,"MODIS zero run >=7 d, cause not verified (flagged only, not filled)",0 MODIS detections 2002-03-20..2002-03-29 (10 d); VIIRS rows in run = 0,False
