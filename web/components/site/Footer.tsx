@@ -75,7 +75,11 @@ export function Footer() {
       </div>
       <div className="container-page flex flex-col gap-2 border-t border-line py-6 text-mute sm:flex-row sm:justify-between">
         <p className="label">
-          {site.event} · Team {site.team}
+          {site.event} · Team {site.team} · Developed by{' '}
+          <a href={site.developer.url} target="_blank" rel="noopener noreferrer" className="text-ink-2 transition-colors hover:text-accent">
+            {site.developer.name}
+            <span className="sr-only"> (opens in a new tab)</span>
+          </a>
         </p>
         <p className="label">
           Data to {fmtDate(pakistan.data_extent.to)} · {site.footer.note}

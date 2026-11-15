@@ -19,7 +19,10 @@ export const metadata: Metadata = {
   description,
   keywords,
   applicationName: site.name,
-  authors: [{ name: `Team ${site.team}`, url: site.teamUrl }],
+  authors: [
+    { name: `Team ${site.team}`, url: site.teamUrl },
+    { name: site.developer.name, url: site.developer.url },
+  ],
   creator: `Team ${site.team}`,
   alternates: { canonical: '/' },
   openGraph: { type: 'website', locale: 'en_US', url: SITE_URL, siteName: site.name, title, description },

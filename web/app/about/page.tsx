@@ -38,6 +38,13 @@ export default function AboutPage() {
         <p>
           {site.name} is our answer to the NASA Space Apps Challenge 2026 problem &ldquo;{site.challenge.title}&rdquo;, set with CONAE, Argentina&apos;s space agency. We are team {site.team}.
         </p>
+        <p>
+          Developed by{' '}
+          <a href={site.developer.url} target="_blank" rel="noopener noreferrer" className="text-accent underline-offset-4 hover:underline">
+            {site.developer.name}
+          </a>
+          .
+        </p>
       </PageHeader>
 
       <section className="section pt-0" aria-labelledby="req">

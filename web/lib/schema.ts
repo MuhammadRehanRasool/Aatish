@@ -9,6 +9,7 @@ export const siteSchema = z.object({
   team: z.string(),
   event: z.string(),
   challenge: z.object({ title: z.string(), url: z.string().url() }),
+  developer: z.object({ name: z.string(), url: z.string().url() }),
   teamUrl: z.string().url(),
   repoUrl: z.string(),
   seo: z.object({ title: z.string(), description: z.string(), keywords: z.array(z.string()) }),
