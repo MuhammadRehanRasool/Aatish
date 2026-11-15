@@ -72,36 +72,44 @@ class AOI:
 class Store:
     def __init__(self) -> None:
         self.calib = json.loads(CALIB.read_text(encoding="utf-8"))
+        # Text columns are mapped to small ints inside DuckDB so start-up never materialises millions of
+        # Python strings (keeps peak memory low enough for small hosts).
         con = duckdb.connect()
-        df = con.execute(
-            f"""SELECT date, acq_time, lat, lon, satellite, quality, static_flag, series_role, sensor,
-                       w_modis_eq, w_viirs_eq, frp, daynight
+        con.execute("SET threads TO 2")
+        sat_case = " ".join(f"WHEN '{k}' THEN {v}" for k, v in SAT.items())
+        kind_case = " ".join(f"WHEN '{k}' THEN {v}" for k, v in KIND.items())
+        a = con.execute(
+            f"""SELECT (date - DATE '1970-01-01')::INTEGER AS day,
+                       year(date)::SMALLINT AS year, month(date)::TINYINT AS month, day(date)::TINYINT AS dom,
+                       coalesce(acq_time, 0)::SMALLINT AS hhmm, lat, lon,
+                       (CASE satellite {sat_case} END)::TINYINT AS sat,
+                       coalesce(quality = 'NRT', false) AS nrt, static_flag,
+                       coalesce(CASE series_role {kind_case} END,
+                                CASE WHEN coalesce(sensor = 'MODIS', false) THEN 4 ELSE 3 END)::TINYINT AS kind,
+                       w_modis_eq, w_viirs_eq, coalesce(frp, 0)::FLOAT AS frp,
+                       coalesce(daynight = 'N', false) AS night
                 FROM read_parquet('{PARQUET.as_posix()}') WHERE conf_ok"""
-        ).df()
+        ).fetchnumpy()
+        self.n_rows_total = int(con.execute(f"SELECT count(*) FROM read_parquet('{PARQUET.as_posix()}')").fetchall()[0][0])
         con.close()
-        d = pd.to_datetime(df["date"])
-        self.n_rows_total = int(duckdb.sql(f"SELECT count(*) FROM read_parquet('{PARQUET.as_posix()}')").fetchall()[0][0])
-        self.lat = df["lat"].to_numpy(np.float64)
-        self.lon = df["lon"].to_numpy(np.float64)
-        self.day = ((d - pd.Timestamp("1970-01-01")).dt.days).to_numpy(np.int32)
-        self.year = d.dt.year.to_numpy(np.int16)
-        self.month = d.dt.month.to_numpy(np.int8)
-        self.dom = d.dt.day.to_numpy(np.int8)
+        col = lambda k, t: np.asarray(a.pop(k), dtype=t)  # noqa: E731
+        self.lat = col("lat", np.float64)
+        self.lon = col("lon", np.float64)
+        self.day = col("day", np.int32)
+        self.year = col("year", np.int16)
+        self.month = col("month", np.int8)
+        self.dom = col("dom", np.int8)
         self.ym = (self.year.astype(np.int32) * 12 + self.month - 1 - YM0).astype(np.int16)
-        self.wm = df["w_modis_eq"].to_numpy(np.float64)
-        self.wv = df["w_viirs_eq"].to_numpy(np.float64)
-        self.static = df["static_flag"].to_numpy(bool)
-        self.nrt = (df["quality"] == "NRT").to_numpy(bool)
-        self.sat = df["satellite"].map(SAT).to_numpy(np.int8)
-        self.frp = df["frp"].fillna(0).to_numpy(np.float32)
-        self.night = (df["daynight"] == "N").to_numpy(bool)
-        self.hhmm = df["acq_time"].fillna(0).astype(np.int16).to_numpy()
-        role = df["series_role"].map(KIND)
-        is_modis = (df["sensor"] == "MODIS").to_numpy()
-        kind = role.fillna(-1).to_numpy(np.int8)
-        kind[(kind < 0) & ~is_modis] = 3
-        kind[(kind < 0) & is_modis] = 4
-        self.kind = kind
+        self.wm = col("w_modis_eq", np.float64)
+        self.wv = col("w_viirs_eq", np.float64)
+        self.static = col("static_flag", bool)
+        self.nrt = col("nrt", bool)
+        self.sat = col("sat", np.int8)
+        self.frp = col("frp", np.float32)
+        self.night = col("night", bool)
+        self.hhmm = col("hhmm", np.int16)
+        self.kind = col("kind", np.int8)
+        del a
         series = self.kind <= 2
         self.first_day = int(self.day[series].min())
         self.last_day = int(self.day[series].max())
