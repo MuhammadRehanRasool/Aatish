@@ -130,24 +130,27 @@ export function StatusPill({ span, className }: { span: string; className?: stri
   }, [])
   const live = st.mode === 'live'
   const archive = st.mode === 'archive'
+  const waking = archive && st.waking
   return (
     <button
       type="button"
-      onClick={() => archive && API_CONFIGURED && void checkApi(true)}
+      onClick={() => archive && !waking && API_CONFIGURED && void checkApi(true)}
       title={
         live
           ? 'Connected to the Aatish API: any area, any date range, live FIRMS and the AI assistant.'
-          : archive
+          : waking
+            ? 'The live API server is waking up (free hosting sleeps when idle; this takes up to a minute). Meanwhile this page uses the bundled archive and switches to Live on its own.'
+            : archive
             ? `The live API is not reachable, so this page uses the bundled archive (same numbers, built by the same code; default filters). ${API_CONFIGURED ? 'Click to try the API again.' : ''}`
             : 'Checking the API…'
       }
       className={cn('inline-flex items-center gap-2 whitespace-nowrap rounded-full border px-3 py-1.5 font-mono text-[0.66rem] font-semibold uppercase tracking-[0.1em] transition-colors', live ? 'border-signal/40 bg-signal/10 text-signal' : 'border-white/15 bg-white/[0.04] text-ink-2 hover:text-ink', className)}
       aria-live="polite"
     >
-      <span className={cn('relative h-1.5 w-1.5 rounded-full', live ? 'bg-signal' : archive ? 'bg-[#E9B44C]' : 'animate-pulse bg-mute')}>
+      <span className={cn('relative h-1.5 w-1.5 rounded-full', live ? 'bg-signal' : waking ? 'animate-pulse bg-[#E9B44C]' : archive ? 'bg-[#E9B44C]' : 'animate-pulse bg-mute')}>
         {live && <span className="absolute inset-0 animate-ping rounded-full bg-signal/70" />}
       </span>
-      {live ? `Live API · ${st.ms ?? '–'}ms` : archive ? `Archive Mode · ${span}` : 'Connecting…'}
+      {live ? `Live API · ${st.ms ?? '–'}ms` : waking ? 'Waking server…' : archive ? `Archive Mode · ${span}` : 'Connecting…'}
     </button>
   )
 }

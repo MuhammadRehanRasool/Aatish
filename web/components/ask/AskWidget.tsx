@@ -3,12 +3,34 @@
 import { usePathname } from 'next/navigation'
 import { Fragment, useCallback, useEffect, useRef, useState } from 'react'
 
-import { checkApi } from '@/lib/archive'
+import { WAKE_BUDGET_MS, checkApi, wakeApi } from '@/lib/archive'
 import { getAskView } from '@/lib/askView'
 import { API_URL } from '@/lib/content'
 import { cn } from '@/lib/utils'
 
-type Msg = { role: 'user' | 'assistant'; text: string; steps?: string[]; error?: boolean }
+type Msg = { role: 'user' | 'assistant'; text: string; steps?: string[]; error?: boolean; wakingSince?: number }
+
+/** Live "waking the server" line with elapsed seconds, so a cold start never looks like a dead site. */
+function WakingNote({ since }: { since: number }) {
+  const [now, setNow] = useState(() => Date.now())
+  useEffect(() => {
+    const t = window.setInterval(() => setNow(Date.now()), 1000)
+    return () => window.clearInterval(t)
+  }, [])
+  const s = Math.max(0, Math.round((now - since) / 1000))
+  return (
+    <div className="rounded-xl border border-[#E9B44C]/30 bg-[#E9B44C]/[0.07] px-3 py-2 text-ink-2" role="status">
+      <p className="flex items-center gap-2 font-semibold text-ink">
+        <span aria-hidden="true" className="h-2 w-2 animate-pulse rounded-full bg-[#E9B44C]" />
+        Waking up the AI server… <span className="font-mono text-[0.75rem] font-normal tabular-nums text-mute">{s}s</span>
+      </p>
+      <p className="mt-1 text-[0.78rem]">
+        It runs on free hosting that sleeps when nobody is using it, so the first question can take up to a minute. Your question will be answered
+        as soon as it is up; no need to resend.
+      </p>
+    </div>
+  )
+}
 
 const SUGGEST = [
   'Was this year worse than usual?',
@@ -79,6 +101,11 @@ export function AskWidget() {
     listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: 'smooth' })
   }, [msgs])
 
+  // opening the assistant starts waking a sleeping API, so it is usually up by the time the question is typed
+  useEffect(() => {
+    if (open) void checkApi()
+  }, [open])
+
   useEffect(() => {
     if (open) inputRef.current?.focus()
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && open && setOpen(false)
@@ -102,10 +129,19 @@ export function AskWidget() {
       const patch = (fn: (m: Msg) => Msg) => setMsgs((all) => [...all.slice(0, -1), fn(all[all.length - 1]!)])
       const ctl = new AbortController()
       abortRef.current = ctl
-      if (!(await checkApi())) {
+      let up = await checkApi()
+      if (!up && !ctl.signal.aborted) {
+        patch((m) => ({ ...m, wakingSince: Date.now() }))
+        up = await Promise.race([wakeApi(), new Promise<boolean>((res) => ctl.signal.addEventListener('abort', () => res(false), { once: true }))])
+        patch((m) => ({ ...m, wakingSince: undefined, steps: up ? ['Server is awake'] : m.steps }))
+      }
+      if (!up) {
         patch((m) => ({
           ...m,
-          text: 'The AI assistant needs the live Aatish API, which is not reachable right now, so the site is in **Archive Mode**. Every map, chart and number on the site still works from the bundled archive. Try again when the API is online.',
+          text: ctl.signal.aborted
+            ? 'Stopped.'
+            : `The AI server did not wake up within ${Math.round(WAKE_BUDGET_MS / 1000)} seconds, so the assistant is unavailable right now. Every map, chart and number on the site still works from the bundled archive (**Archive Mode**). Please try your question again in a minute.`,
+          error: !ctl.signal.aborted,
         }))
         setBusy(false)
         abortRef.current = null
@@ -242,7 +278,13 @@ export function AskWidget() {
                       ))}
                     </ul>
                   )}
-                  {m.text ? <Markdown text={m.text} /> : busy && i === msgs.length - 1 ? <p className="animate-pulse text-mute">Thinking…</p> : null}
+                  {m.text ? (
+                    <Markdown text={m.text} />
+                  ) : m.wakingSince ? (
+                    <WakingNote since={m.wakingSince} />
+                  ) : busy && i === msgs.length - 1 ? (
+                    <p className="animate-pulse text-mute">Thinking…</p>
+                  ) : null}
                 </div>
               )
             )}

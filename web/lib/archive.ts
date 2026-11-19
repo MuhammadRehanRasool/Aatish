@@ -13,12 +13,17 @@ import { API_URL } from './content'
 /** In a production build without NEXT_PUBLIC_API_URL there is no API to call: go straight to the archive. */
 export const API_CONFIGURED = Boolean(process.env.NEXT_PUBLIC_API_URL) || process.env.NODE_ENV !== 'production'
 
-export type ApiStatus = { mode: 'checking' | 'live' | 'archive'; ms: number | null }
-const SERVER: ApiStatus = { mode: 'checking', ms: null }
+/**
+ * mode: what the data layer uses right now. waking: the API did not answer the quick check, but a hosted free-tier
+ * server may just be asleep (cold start takes up to about a minute), so we keep retrying in the background while the
+ * page runs on the archive. When the server wakes up, the page switches to Live on its own.
+ */
+export type ApiStatus = { mode: 'checking' | 'live' | 'archive'; ms: number | null; waking: boolean }
+const SERVER: ApiStatus = { mode: 'checking', ms: null, waking: false }
 let status: ApiStatus = SERVER
 const subs = new Set<() => void>()
-const setStatus = (s: ApiStatus) => {
-  status = s
+const setStatus = (s: Partial<ApiStatus>) => {
+  status = { ...status, ...s }
   subs.forEach((f) => f())
 }
 const subscribe = (f: () => void) => {
@@ -28,33 +33,76 @@ const subscribe = (f: () => void) => {
   }
 }
 
+/** One GET /api/health with a timeout. Resolves to the round-trip time in ms, or null. */
+async function ping(timeoutMs: number): Promise<number | null> {
+  const ctl = new AbortController()
+  const to = window.setTimeout(() => ctl.abort(), timeoutMs)
+  const t0 = performance.now()
+  try {
+    const r = await fetch(`${API_URL}/api/health`, { signal: ctl.signal, cache: 'no-store' })
+    if (!r.ok) return null
+    await r.json()
+    return Math.round(performance.now() - t0)
+  } catch {
+    return null
+  } finally {
+    window.clearTimeout(to)
+  }
+}
+
 let probe: Promise<boolean> | null = null
-/** One health check per page load (a refused connection is logged by the browser, so we do not poll). */
+/** Quick health check, once per page load. On failure the page goes to Archive Mode and a background wake-up starts. */
 export function checkApi(force = false): Promise<boolean> {
   if (!API_CONFIGURED) {
-    if (status.mode !== 'archive') setStatus({ mode: 'archive', ms: null })
+    if (status.mode !== 'archive') setStatus({ mode: 'archive', ms: null, waking: false })
     return Promise.resolve(false)
   }
   if (probe && !force) return probe
   if (force) setStatus({ mode: 'checking', ms: null })
   probe = (async () => {
-    const ctl = new AbortController()
-    const to = window.setTimeout(() => ctl.abort(), 3500)
-    const t0 = performance.now()
-    try {
-      const r = await fetch(`${API_URL}/api/health`, { signal: ctl.signal, cache: 'no-store' })
-      if (!r.ok) throw new Error(String(r.status))
-      await r.json()
-      setStatus({ mode: 'live', ms: Math.round(performance.now() - t0) })
+    const ms = await ping(3500)
+    if (ms !== null) {
+      setStatus({ mode: 'live', ms, waking: false })
       return true
-    } catch {
-      setStatus({ mode: 'archive', ms: null })
-      return false
-    } finally {
-      window.clearTimeout(to)
     }
+    setStatus({ mode: 'archive', ms: null })
+    void wakeApi()
+    return false
   })()
   return probe
+}
+
+/** How long we keep trying to wake a sleeping server before giving up and staying in Archive Mode. */
+export const WAKE_BUDGET_MS = 100_000
+let waking: Promise<boolean> | null = null
+/**
+ * Keep pinging until the API answers or WAKE_BUDGET_MS runs out. A sleeping host either holds the first request
+ * until it has booted or answers 502/503 meanwhile, so each try waits up to 25 s and failures retry after a pause.
+ * Shared: every caller awaits the same wake-up. Resolves true once the API is live.
+ */
+export function wakeApi(): Promise<boolean> {
+  if (!API_CONFIGURED) return Promise.resolve(false)
+  if (status.mode === 'live') return Promise.resolve(true)
+  if (waking) return waking
+  setStatus({ waking: true })
+  waking = (async () => {
+    const end = Date.now() + WAKE_BUDGET_MS
+    while (Date.now() < end) {
+      const ms = await ping(Math.min(25_000, Math.max(1000, end - Date.now())))
+      if (ms !== null) {
+        probe = Promise.resolve(true)
+        setStatus({ mode: 'live', ms, waking: false })
+        return true
+      }
+      const pause = Math.min(4000, end - Date.now())
+      if (pause > 0) await new Promise((r) => window.setTimeout(r, pause))
+    }
+    setStatus({ waking: false })
+    return false
+  })().finally(() => {
+    waking = null
+  })
+  return waking
 }
 
 export const useApiStatus = () => useSyncExternalStore(subscribe, () => status, () => SERVER)
@@ -148,6 +196,8 @@ async function either<T>(live: () => Promise<T>, offline: () => Promise<T>): Pro
     } catch (e) {
       if (e instanceof TypeError) {
         setStatus({ mode: 'archive', ms: null })
+        probe = Promise.resolve(false)
+        void wakeApi()
         return offline()
       }
       throw e
